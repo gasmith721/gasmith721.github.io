@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <header class="main-header" role="banner">
+  <img src="http://watchlist.org/wp-content/uploads/header-logo.png" width="600" height="125" alt="Banner Image"/>
+        <div><div style="font-size: 48px; font-family: Hoefler Text; font-weight: bold; color: #aa3b3b; text-shadow: -.5px 0 black, 0 .5px black, .5px 0 black, 0 -.5px black;">YEMEN</div> 
+            <p><p style="font-size: 18px; font-family: Palatino Linotype;">A GIS project by <a href="http://watchlist.org/"target="blank"><font color="#0000FF">Watchlist on Children & Armed Conflict</font></a>
+            </p></header>
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+        <!--
+            Load Carto's code so we can pull in our Carto maps.
+        -->
+        <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodbui/assets/4.6.25/stylesheets/deep_insights.css" />
+        <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+        <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodbui/assets/4.6.25/stylesheets/public_editor3.css" />
+        <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
+
+        </head>       
+        <style>
+                .main-header {
+  text-align: center; padding:1px; border:1px solid #021a40; background-color: #eff1f4;
+   -moz-box-shadow:    inset 0 0 10px #000000;
+   -webkit-box-shadow: inset 0 0 10px #000000;
+   box-shadow:         inset 0 0 10px #000000;
+}
+            h1 {text-align: left; font-family: Palatino Linotype; font-size: 32px}
+            p {font-family: Candara; font-size: 14px}
+            
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 10px;
+                width: 100%;
+            }
+
+            #map {
+                height: 75%;
+                width: 75%;
+            }
+        </style>
+    
+        <body>
+         <h1>Conflict Overview</h1>
+            <p>The ongoing conflict in Yemen that escalated sharply in March 2015 has led to the near collapse of the country’s already fragile health care system. The Office for the Coordination of Humanitarian Affairs (OCHA) reported in June 2016 that 50 percent of hospitals are either not functioning or partially functioning and 25 percent of all health facilities have shut down due to damages, or shortages of staff, medicines, and other resources.  Many health care facilities have been indirectly damaged during conflict; however, many have also been directly targeted by parties to conflict. Medecins Sans Frontiers (MSF) and other humanitarian organizations have systematically shared the GPS coordinates of hospitals in which they work with parties involved in the conflict, in order to prevent unintended strikes, particularly through aerial bombing. However in many cases, this has been to no avail.  According to the World Health Organization (WHO), between March 2015 and March 2016, more than 100 health facilities had been attacked, 11 health workers killed, and 17 injured. Most commonly, hospitals have been directly hit by airstrikes carried-out by the Saudi-led Coalition. However, Houthis, Yemeni forces, and other armed groups have also looted and occupied hospitals, shot at and abducted ambulances, and denied passage at checkpoints to persons attempting to reach hospitals to receive lifesaving treatment or deliver essential medicines and supplies. </p>
+                <p>The following set of maps are an attempt to provide a spatial and visual analysis of different elements of the conflict and its effect on the Yemeni health care system.</p>
+            <h1>Individual Attacks Affecting Healthcare Facilities</h1>
+            <p>Over the course of approximately 15 months from March 2015 to June 2016, there have been over XX (100?) direct or indirect attacks on health facilities in Yemen. More text TBD... </p>
+            
+            <div id="map"></div>
+            <div class="buttons">
+            <button class="airstrike">airstrike</button>
+            <button class="ground-attack">ground attack</button>
+            <button class="indiscriminate-attack">indiscriminate attack</button>
+        </div> 
+            <script>
+            var attacksLayer;
+            $(document).ready(function () {
+                //
+                // Initialize map from Carto: create the map and store the data layer for later
+                //
+                // The format for this url is:
+                //  https://thenewschool.carto.com/u/{username}/api/v2/viz/{mapid}/viz.json
+                //
+                // and you can find the mapid by looking at the url of your map when editing it. For example,
+                // when I'm editing this map the url is:
+                //  https://thenewschool.carto.com/u/brelsfoeagain/builder/79edb122-0374-11e7-b189-0e233c30368f
+                //
+                // The mapid is everything after "/builder/" at the end.
+                //
+                cartodb.createVis('map', 'https://thenewschool.carto.com/u/smitg916/api/v2/viz/f3ac1254-fc7d-11e6-afd7-0e98b61680bf/viz.json', {zoom: 7})
+                    .done(function (vis, layers) {
+                        // Store the data layer for later:
+                        //  * layers[0] is the base layer (eg OpenStreetMap)
+                        //  * layers[1] is where all of your data layers go, and they're stored as "sublayers". The first one is numbered 0, the second is 1, etc. In this case we're getting the first sublayer.
+                        attacksLayer = layers[1].getSubLayer(0);
+                    });
+
+                //
+                // Initialize the buttons
+                //
+                $('.airstrike').click(function () {
+                    attacksLayer.setSQL("SELECT * FROM attack_type WHERE attack_type = 'airstrike'");
+                });
+                $('.ground-attack').click(function () {
+                    attacksLayer.setSQL("SELECT * FROM attack_type WHERE attack_type = 'ground'");
+});
+                $('.indiscriminate-attack').click(function () {
+                    attacksLayer.setSQL("SELECT * FROM attack_type WHERE attack_type != 'airstrike'"); ("SELECT * FROM attack_type WHERE attack_type != 'ground'")
+                });
+            });
+        </script>
+            <h1>Healthcare Operationality Levels</h1>
+            <p>Text TBD...</p>
+    </body>
+</html>
