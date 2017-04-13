@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+          <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+        <!--
+            Load Carto's code so we can pull in our Carto maps.
+        -->
+        <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+        <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
+
+       
+        <style>
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+            }
+
+            #map {
+                height: 100%;
+                width: 100%;
+            }
+          
+            .input-box {
+                background: white;
+                border-radius: 5px;
+                position: absolute;
+                padding: 5px;
+                top: 75px;
+                right: 25px;
+            }
+        </style>
+
+    </head>
+    <body>
+      <div id="map">
+        <div class="checkbox">
+                    
+<input type="checkbox" value="AIR">Airstrike</p>
+<input type="checkbox" value="GROUND">Ground Attack</p>
+<input type="checkbox" value="INDISCRIMINATE">Indiscriminate Attack</p>
+
+           
+</div>
+        </select>
+
+        <script>
+            var attacksLayer;
+            $(document).ready(function () {
+                //
+                // Initialize map from CartoDB: create the map and store the data layer for later
+                //
+                cartodb.createVis('map', 'https://thenewschool.carto.com/u/smitg916/api/v2/viz/f3ac1254-fc7d-11e6-afd7-0e98b61680bf/viz.json', {zoom: 7})
+                    .done(function (vis, layers) {
+                        attacksLayer = layers[1].getSubLayer(0);
+                    });
+
+                $('.type-checkbox').change(function () {
+                    var type = $('.type-checkbox').val();
+                    console.log(type);
+                    var sql;
+                    if (type === 'Airstrike') {
+                        // if type is 'all', reset SQL to the original
+                        attacksLayer.sql = "SELECT * FROM smitg916.yemen_attack_report_points1 WHERE attack_type = 'airstrike'";
+                    }
+                    if (type === 'Ground Attack') {
+                        // if type is 'all', reset SQL to the original
+                        attacksLayer.sql = "SELECT * FROM smitg916.yemen_attack_report_points1 WHERE attack_type = 'ground'";
+                    }
+                     if (type === 'Indiscriminate Attack') {
+                        // if type is 'all', reset SQL to the original
+                        attacksLayer.sql =   "SELECT * FROM smitg916.yemen_attack_report_points1 WHERE attack_type != 'airstrike' AND attack_type != 'ground'";
+                    }
+                    console.log(sql);
+                    at.setSQL(sql);
+                });
+            });
+       </script>
+    </body>
+</html>
