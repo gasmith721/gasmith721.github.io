@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!--
+    Load CartoDB's code so we can pull in our CartoDB maps.
+    -->
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+    
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+      }
+
+      #map {
+        height: 100%;
+        width: 100%;
+      }
+      
+      .checkbox-container {
+        position: absolute;
+        top: 40px;
+        right: 55px;
+        list-style: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <ul class="checkbox-container">
+      <li>
+        <label for="airstrike">airstrike</label>
+        <input id="airstrike" type="checkbox" class="airstrike-checkbox" />
+      </li>
+      <li>
+        <label for="ground">ground attack</label>
+        <input id="ground" type="checkbox" class="ground-checkbox" />
+      </li>
+      <li>
+        <label for="indiscriminate">indiscriminate attack</label>
+        <input id="indiscriminate" type="checkbox" class="indiscriminate-checkbox" />
+      </li>
+    </ul>
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+    <script>
+      var dataLayer;
+      $(document).ready(function () {
+        //
+        // Initialize map from CartoDB: create the map and store the data layer for later
+        //
+        cartodb.createVis('map', 'https://thenewschool.carto.com/u/smitg916/api/v2/viz/f3ac1254-fc7d-11e6-afd7-0e98b61680bf/viz.json')
+          .done(function (vis, layers) {
+            // Store the data layer for later:
+            //  * layers[0] is the base layer (eg OpenStreetMap)
+            //  * layers[1] is where all of your data layers go, and they're stored as "sublayers". The first one is numbered 0, the second is 1, etc. In this case we're getting the first sublayer.
+            dataLayer = layers[1].getSubLayer(0);
+          });
+
+        //
+        // Initialize the checkboxes: add an event handler to watch for changes.
+        //
+        // Call updateSql on any change.
+        //
+        $('.airstrike-checkbox').change(function () {
+          updateSql();
+        });
+        $('.ground-checkbox').change(function () {
+          updateSql();
+        });
+        $('.indiscriminate-checkbox').change(function () {
+          updateSql();
+        });
+      });
+
+      //
+      // Update the SQL for the layer based on the current state of the checkboxes.
+      //
+      function updateSql() {
+        var whereConditions = [];
+        // Since there are more checkboxes we use a technique that is a bit different from previous examples. We gather all the parts of the WHERE clause in an array (whereConditions) based on which checkboxes are checked.
+        // If you were using this technique you would do the following for each checkbox
+        if ($('.airstrike-checkbox').prop('checked')) {
+          whereConditions.push("attack_type = 'airstrike'");
+        }
+        if ($('.ground-checkbox').prop('checked')) {
+          whereConditions.push("attack_type = 'ground'");
+        }
+        if ($('.indiscriminate-checkbox').prop('checked')) {
+          whereConditions.push("attack_type = 'indiscriminate'");
+        }
+        var sql = "SELECT * FROM yemen_attack_report_points1";
+
+        // If there are any whereConditions, we add WHERE to the SQL statement and the conditions
+        if (whereConditions.length > 0) {
+          // Then we combine them with ' OR ', so any of the conditions can be true.
+          sql += ' WHERE ' + whereConditions.join(' OR ');
+        }
+        // Leaving this console.log() here so we can make sure we get valid SQL.
+        console.log(sql);
+        dataLayer.setSQL(sql);
+      }
+    </script>
+
+  </body>
+</html>
