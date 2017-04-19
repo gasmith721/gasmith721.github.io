@@ -1,0 +1,268 @@
+<!doctype html>
+<html>
+  <head>
+     <header class="main-header" role="banner">
+  <img src="http://watchlist.org/wp-content/uploads/header-logo.png" width="600" height="125" alt="Banner Image"/>
+        <div><div style="font-size: 48px; font-family: Palatino Linotype; font-weight: bold; color: #b00836; text-shadow: -.5px 0 black, 0 .5px black, .5px 0 black, 0 -.5px black;padding-bottom: 5px;">YEMEN</div> 
+            <div><div style="font-size: 18px; font-family: Palatino Linotype; padding-bottom: 20px">A GIS project by <a href="http://watchlist.org/"target="blank"><font color="#0000FF">Watchlist on Children & Armed Conflict</font></a>
+            </div>
+            </header>
+         
+       <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <!--
+    Load CartoDB's code so we can pull in our CartoDB maps.
+    -->
+   <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+<script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
+    
+    <style>
+        
+.main-header {
+    text-align: center; 
+    padding:1px; 
+    border:1px solid #021a40; 
+    background-color: #eff1f4;
+    margin-right: 1.5%;
+   -moz-box-shadow:    inset 0 0 50px #000000;
+   -webkit-box-shadow: inset 0 0 50px #000000;
+   box-shadow:         inset 0 0 50px #000000;
+}
+      
+        html, body {
+        height: 100%;
+        margin: 0;
+        padding: 5px;
+        width: 100%;
+      }
+         
+    h1 {text-align: left; font-family: Palatino Linotype; font-size: 32px; padding-top: 25px}
+    p {font-family: Palatino Linotype; font-size: 14px; padding-top: 10px; line-height: 20px}
+        
+      #map {
+        height: 70%;
+        width: 90%;
+        resize: inherit;
+        position: absolute;
+        padding-left: 40px;
+        padding-bottom: 25px;
+        
+      }
+    
+       
+        p {
+        padding-right: 75px;
+        padding-left: 40px;
+        }
+        
+        h1 {
+        padding-left: 40px;
+        }
+        
+#navlist li {
+display:inline;
+list-style-type:none;
+padding-left: 5px;
+padding-top: 500px;
+font-family: Palatino Linotype;
+align-content: center;
+color: #b00836;
+        }
+
+        
+    </style>
+  </head>
+  <body>
+     <h1>Conflict Overview</h1>
+            <p>The ongoing conflict in Yemen, which escalated sharply in March 2015, has led to the near collapse of the country's already fragile health care system. The Office for the Coordination of Humanitarian Affairs (OCHA) reported in June 2016 that 50 percent of hospitals are either not functioning or partially functioning and 25 percent of all health facilities have shut down due to damages, or shortages of staff, medicines, and other resources.  Many health care facilities have been indirectly damaged during conflict; however, many have also been directly targeted by parties to conflict. Medecins Sans Frontiers (MSF) and other humanitarian organizations have systematically shared the GPS coordinates of hospitals in which they work with parties involved in the conflict, in order to prevent unintended strikes, particularly through aerial bombing. However in many cases, this has been to no avail. Most commonly, hospitals have been directly hit by airstrikes carried-out by the Saudi-led Coalition. However, Houthis, Yemeni forces, and other armed groups have also looted and occupied hospitals, shot at and abducted ambulances, and denied passage at checkpoints to persons attempting to reach hospitals to receive lifesaving treatment or deliver essential medicines and supplies. </p>
+    
+    <h1>Spatial Analysis</h1>
+      <p style="padding-bottom:20px;">According to the World Health Organization (WHO), in the period between March 2015 and March 2016, more than 100 health facilities had been attacked. In addition, a November 2016 WHO survey <a href="http://www.emro.who.int/media/news/survey-reveals-extent-of-damage-to-yemens-health-system.html" target="_blank"><font color="#0000FF">revealed</font></a> that, in total, 274 health facilities have been damaged - 69 completely and 205 partially - as a result of the conflict. In constructing a geographical representation of the conflict, Watchlist has compiled data and statistics from reports by a number of different organizations (OCHA, WHO, MSF, other NGOs, media outlets, etc.) in order to provide a spatial overview of individual attacks and disruptions, as well as the operational levels of health facilities at the governorate level (to be added to the map below later). The period covered in this analysis is approximately March 2015 thru April 2016. Over this period, and as detailed in the map below, Watchlist has identified 52 instances of an attack or a disruption that is supported by official reporting. Details about these invidents, including links to the supporting reports, can be accessed by clicking directly on the data point on the map. The data can also be filtered by attack type by choosing any of the three checkboxes - airstrike, ground attack, or unidentified attack - located above the map at the top left. Due to gaps in the reporting process caused by the overall difficulty of data collection in Yemen, these incidents make up only a fraction of the total number of health facility attacks. </p>
+      
+       <ul id="navlist">
+      <li id="active"><a href="#" id="current"></a>
+        <label for="airstrike">airstrike</label>
+        <input id="airstrike" type="checkbox" class="airstrike-checkbox" />
+      </li>
+      <li>
+        <label for="ground">ground attack</label>
+        <input id="ground" type="checkbox" class="ground-checkbox" />
+      </li>
+      <li>
+        <label for="indiscriminate">unidentified attack</label>
+        <input id="indiscriminate" type="checkbox" class="indiscriminate-checkbox" />
+      </li>
+    </ul>
+      
+<div id="map"></div>
+
+         <script src="https://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+    <script>
+      var dataLayer;
+      $(document).ready(function () {
+        
+        // Initialize map from CartoDB: create the map and store the data layer for later
+        //
+        cartodb.createVis( 'https://thenewschool.carto.com/u/smitg916/api/v2/viz/f3ac1254-fc7d-11e6-afd7-0e98b61680bf/viz.json', {zoom:7})
+          .done(function (vis, layers) {
+            // Store the data layer for later:
+            //  * layers[0] is the base layer (eg OpenStreetMap)
+            //  * layers[1] is where all of your data layers go, and they're stored as "sublayers". The first one is numbered 0, the second is 1, etc. In this case we're getting the first sublayer.
+            dataLayer = layers[1].getSubLayer(0);
+          });
+        //
+        // Initialize the checkboxes: add an event handler to watch for changes.
+        //
+        // Call updateSql on any change.
+        //
+        $('.airstrike-checkbox').change(function () {
+          updateSql();
+        });
+        $('.ground-checkbox').change(function () {
+          updateSql();
+        });
+        $('.indiscriminate-checkbox').change(function () {
+          updateSql();
+        });
+      });
+      //
+      // Update the SQL for the layer based on the current state of the checkboxes.
+      //
+      function updateSql() {
+        var whereConditions = [];
+        // Since there are more checkboxes we use a technique that is a bit different from previous examples. We gather all the parts of the WHERE clause in an array (whereConditions) based on which checkboxes are checked.
+        // If you were using this technique you would do the following for each checkbox
+        if ($('.airstrike-checkbox').prop('checked')) {
+          whereConditions.push("attack_type = 'airstrike'");
+        }
+        if ($('.ground-checkbox').prop('checked')) {
+          whereConditions.push("attack_type = 'ground'");
+        }
+        if ($('.indiscriminate-checkbox').prop('checked')) {
+          whereConditions.push("attack_type = 'indiscriminate'");
+        }
+        var sql = "SELECT * FROM yemen_attack_report_points1";
+        // If there are any whereConditions, we add WHERE to the SQL statement and the conditions
+        if (whereConditions.length > 0) {
+          // Then we combine them with ' OR ', so any of the conditions can be true.
+          sql += ' WHERE ' + whereConditions.join(' OR ');
+        }
+        // Leaving this console.log() here so we can make sure we get valid SQL.
+        console.log(sql);
+        dataLayer.setSQL(sql);
+      }
+    </script>
+      
+        <script>
+            var dataLayer;
+            $(document).ready(function () {cartodb.createVis('map', 'https://thenewschool.carto.com/u/smitg916/api/v2/viz/f3ac1254-fc7d-11e6-afd7-0e98b61680bf/viz.json',{zoom: 7})
+  .done(function (vis, layers) {
+      dataLayer = layers[1].getSubLayer(0);
+      var popupTemplate = '<div class="cartodb-popup v2"> <a href="#close" class="cartodb-popup-close-button close">x</a> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">A(n) {{attack_or_disruption}} in the governorate of {{governorate}} on {{attack_date}} at the {{facility_name}} facility <a href="{{report_link}}" target="_blank">as reported by {{report_org}}. </div> </div> <div class="cartodb-popup-tip-container"></div> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">Reported combatant(s): {{combatant_1}} </div> <div>Total killed: {{tot_k}}</div> <div>Total injured: {{tot_i}}</div><div> </div><div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content"> </div><div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">Description: {{description}}</div> </div>';
+                        dataLayer.infowindow.set('template_type', 'mustache');
+                        dataLayer.infowindow.set('template', popupTemplate);
+      });
+  });
+      </script>
+      
+  <!-- LEGEND CODE
+      <div class="cartodb-legend" style="position: fixed; right:500px;">
+      
+  <div class="legend-title" style="font-family: Palatino Linotype; font-weight: bold; font-size: 12px;" >Health Facility Attacks</div> 
+  
+ <div style="font-family: Palatino Linotype; font-size: 12px; color: black;padding-bottom: 15px; padding-left: 22px;">March 2015 - June 2016</div>
+  
+<ul class="legend-list">
+      <li><div class="image" style="font-size: 11px; margin-bottom: 10px; font-family: Palatino Linotype; color:#900C3F;">
+<a href=""><img style= "vertical-align:middle" img src="https://d30y9cdsu7xlg0.cloudfront.net/png/163336-200.png" width="20" height="20" alt=""></a> airstrike</div></li>
+      
+    <li><div class="bullet" style="font-size: 11px; margin-bottom: 10px; font-family: Palatino Linotype; color:#900C3F; font-weight: bold">
+<a href=""><img style= "vertical-align:middle" img src="https://d30y9cdsu7xlg0.cloudfront.net/png/659093-200.png" width="20" height="20" alt=""></a> ground attack</div></li>
+      
+    <li><div class="bullet" style="font-size: 11px; margin-bottom: 10px; font-family: Palatino Linotype; color:#900C3F; font-weight: bold">
+<a href=""><img style= "vertical-align:middle" img src="https://d30y9cdsu7xlg0.cloudfront.net/png/756341-200.png" width="20" height="20" alt=""></a>
+unidentified attack</div></li>
+  </ul>
+</div>
+ -->
+      
+          <!-- MANUAL INPUT FOR HOVER INFOWINDOW CODE // May need later
+           
+                dataLayer.setInteractivity('attack_or_disruption, governorate, facility_name, report_link, report_org, combatant_1, combatant_2, tot_k, tot_i, direct_indirect_attack, operator, town_city, district, attack_detail, description');
+      
+          position: 'bottom|right',
+          fields: [{attack or disruption: 'attack_or_disruption', governorate: 'governorate', facility name: 'facility_name', report link: 'report_link', reporting organization: 'report_org', combatant 1: 'combatant_1', combatant 2: 'combatant_2', total killed: 'tot_k', total injured: 'tot_i', direct/indirect attack: 'direct_indirect_attack', operator: 'operator', town/city: 'town_city', district: 'district', attack detail: 'attack_detail', description: 'description'}]
+                     --> 
+      
+      <!-- CARTO INFOWINDOW ORIGINAL CODE
+
+<div class="CDB-infowindow CDB-infowindow--dark js-infowindow" style="background:#2E3C43">
+  <div class="CDB-infowindow-close js-close"></div>
+  <div class="CDB-infowindow-container">
+    <div class="CDB-infowindow-bg">
+      <div class="CDB-infowindow-inner">
+        <ul class="CDB-infowindow-list js-content">
+          <li class="CDB-infowindow-listItem">
+              <h5 class="CDB-infowindow-title"</h5>
+       
+          </li>
+          <li class="CDB-infowindow-listItem">
+<h5 class="CDB-infowindow-subtitle">Overview:</h5>              
+<h5 class="CDB-infowindow-title">A(n) {{attack_or_disruption}} in the governorate of {{governorate}} on {{attack_date}} affecting the {{facility_name}} facility  <a href="{{report_link}}" target="_blank">as reported by {{report_org}}.</a></h5>
+            <h4 class="CDB-infowindow-title"></h4>
+          </li>
+          <li class="CDB-infowindow-listItem">
+              <h5 class="CDB-infowindow-subtitle">Other Details:</h5>
+            <h4 class="CDB-infowindow-title"></h4>
+         <li class="CDB-infowindow-listItem">
+              <h5 class="CDB-infowindow-subtitle">combatants</h5>
+            <h4 class="CDB-infowindow-title">{{combatant_1}}</h4>
+          </li>
+ 
+            <h4 class="CDB-infowindow-title">{{combatant_2}}</h4>
+          </li>
+          <li class="CDB-infowindow-listItem">
+              <h5 class="CDB-infowindow-subtitle">Total killed</h5>
+            <h4 class="CDB-infowindow-title">{{tot_k}}</h4>
+          </li>
+          <li class="CDB-infowindow-listItem">
+              <h5 class="CDB-infowindow-subtitle">Total injured</h5>
+            <h4 class="CDB-infowindow-title">{{tot_i}}</h4>
+          </li>
+          <li class="CDB-infowindow-listItem">
+              <h5 class="CDB-infowindow-subtitle">Direct or Indirect Attack</h5>
+            <h4 class="CDB-infowindow-title">{{direct_indirect_attack}}</h4>
+          </li>
+          <li class="CDB-infowindow-listItem">
+              <h5 class="CDB-infowindow-subtitle">facility operator</h5>
+            <h4 class="CDB-infowindow-title">{{operator}}</h4>
+          </li>
+          <li class="CDB-infowindow-listItem">
+              <h5 class="CDB-infowindow-subtitle">Town &#x2F; City</h5>
+            <h4 class="CDB-infowindow-title">{{town_city}}</h4>
+          </li>
+          <li class="CDB-infowindow-listItem">
+              <h5 class="CDB-infowindow-subtitle">district</h5>
+            <h4 class="CDB-infowindow-title">{{district}}</h4>
+          </li>
+	      <li class="CDB-infowindow-listItem">
+              <h5 class="CDB-infowindow-subtitle">attack detail</h5>
+            <h4 class="CDB-infowindow-title">{{attack_detail}}</h4>
+          </li>
+          
+          <li class="CDB-infowindow-listItem">
+              <h5 class="CDB-infowindow-subtitle">detailed description</h5>
+            <h4 class="CDB-infowindow-title">{{description}}</h4>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="CDB-hook">
+      <div class="CDB-hook-inner"></div>
+    </div>
+  </div>
+</div>
+-->
+      
+
+  </body>
+</html>
