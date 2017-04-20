@@ -4,7 +4,7 @@
      <header class="main-header" role="banner">
   <img src="http://watchlist.org/wp-content/uploads/header-logo.png" width="600" height="125" alt="Banner Image"/>
         <div><div style="font-size: 48px; font-family: Palatino Linotype; font-weight: bold; color: #b00836; text-shadow: -.5px 0 black, 0 .5px black, .5px 0 black, 0 -.5px black;padding-bottom: 5px;">YEMEN</div> 
-            <div><div style="font-size: 18px; font-family: Palatino Linotype; padding-bottom: 20px">A GIS project by <a href="http://watchlist.org/"target="blank"><font color="#0000FF">Watchlist on Children & Armed Conflict</font></a>
+            <div><div style="font-size: 18px; font-family: Palatino Linotype; padding-bottom: 20px">Research & Mapping: <a href="http://watchlist.org/"target="blank"><font color="#0000FF">Watchlist on Children & Armed Conflict</font></a>
             </div>
             </header>
          
@@ -122,7 +122,26 @@ color: #b00836;
       </li>
     </ul>
       
-<div id="map"></div>
+<div id="map"> 
+      <div class="cartodb-legend" style="position: fixed;">
+      
+  <div class="legend-title" style="font-family: Palatino Linotype; font-weight: bold; font-size: 12px;" >Health Facility Attacks</div> 
+  
+ <div style="font-family: Palatino Linotype; font-size: 12px; color: black;padding-bottom: 15px; padding-left: 22px;">March 2015 - June 2016</div>
+  
+<ul class="legend-list">
+      <li><div class="image" style="font-size: 11px; margin-bottom: 10px; font-family: Palatino Linotype; color:#900C3F;">
+<a href=""><img style= "vertical-align:middle" img src="https://d30y9cdsu7xlg0.cloudfront.net/png/163336-200.png" width="20" height="20" alt=""></a> airstrike</div></li>
+      
+    <li><div class="bullet" style="font-size: 11px; margin-bottom: 10px; font-family: Palatino Linotype; color:#900C3F; font-weight: bold">
+<a href=""><img style= "vertical-align:middle" img src="https://d30y9cdsu7xlg0.cloudfront.net/png/659093-200.png" width="20" height="20" alt=""></a> ground attack</div></li>
+      
+    <li><div class="bullet" style="font-size: 11px; margin-bottom: 10px; font-family: Palatino Linotype; color:#900C3F; font-weight: bold">
+<a href=""><img style= "vertical-align:middle" img src="https://d30y9cdsu7xlg0.cloudfront.net/png/756341-200.png" width="20" height="20" alt=""></a>
+unidentified attack</div></li>
+  </ul>
+</div>	  
+	  </div>
 
          <script src="https://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
     <script>
@@ -192,27 +211,6 @@ color: #b00836;
       });
   });
       </script>
-      
-  <!-- LEGEND CODE
-      <div class="cartodb-legend" style="position: fixed; right:500px;">
-      
-  <div class="legend-title" style="font-family: Palatino Linotype; font-weight: bold; font-size: 12px;" >Health Facility Attacks</div> 
-  
- <div style="font-family: Palatino Linotype; font-size: 12px; color: black;padding-bottom: 15px; padding-left: 22px;">March 2015 - June 2016</div>
-  
-<ul class="legend-list">
-      <li><div class="image" style="font-size: 11px; margin-bottom: 10px; font-family: Palatino Linotype; color:#900C3F;">
-<a href=""><img style= "vertical-align:middle" img src="https://d30y9cdsu7xlg0.cloudfront.net/png/163336-200.png" width="20" height="20" alt=""></a> airstrike</div></li>
-      
-    <li><div class="bullet" style="font-size: 11px; margin-bottom: 10px; font-family: Palatino Linotype; color:#900C3F; font-weight: bold">
-<a href=""><img style= "vertical-align:middle" img src="https://d30y9cdsu7xlg0.cloudfront.net/png/659093-200.png" width="20" height="20" alt=""></a> ground attack</div></li>
-      
-    <li><div class="bullet" style="font-size: 11px; margin-bottom: 10px; font-family: Palatino Linotype; color:#900C3F; font-weight: bold">
-<a href=""><img style= "vertical-align:middle" img src="https://d30y9cdsu7xlg0.cloudfront.net/png/756341-200.png" width="20" height="20" alt=""></a>
-unidentified attack</div></li>
-  </ul>
-</div>
- -->
       
           <!-- MANUAL INPUT FOR HOVER INFOWINDOW CODE // May need later
            
