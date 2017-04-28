@@ -163,13 +163,17 @@ unidentified attack</div></li>
         
         // Initialize map from CartoDB: create the map and store the data layer for later
         //
-        cartodb.createVis( 'https://thenewschool.carto.com/u/smitg916/api/v2/viz/f3ac1254-fc7d-11e6-afd7-0e98b61680bf/viz.json', {zoom:7})
+        cartodb.createVis('map', 'https://thenewschool.carto.com/u/smitg916/api/v2/viz/f3ac1254-fc7d-11e6-afd7-0e98b61680bf/viz.json', {zoom:7})
           .done(function (vis, layers) {
+               vis.getNativeMap().addControl(L.control.zoom());
             // Store the data layer for later:
             //  * layers[0] is the base layer (eg OpenStreetMap)
             //  * layers[1] is where all of your data layers go, and they're stored as "sublayers". The first one is numbered 0, the second is 1, etc. In this case we're getting the first sublayer.
             dataLayer = layers[1].getSubLayer(0);
-          });
+        var popupTemplate = '<div class="cartodb-popup v2"> <a href="#close" class="cartodb-popup-close-button close">x</a> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">A(n) {{attack_or_disruption}} in the governorate of {{governorate}} on {{attack_date}} at the {{facility_name}} facility <a href="{{report_link}}" target="_blank">as reported by {{report_org}}. </div> </div> <div class="cartodb-popup-tip-container"></div> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">Reported combatant(s): {{combatant_1}} </div> <div>Total killed: {{tot_k}}</div> <div>Total injured: {{tot_i}}</div><div> </div><div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content"> </div><div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">Description: {{description}}</div> </div>';
+                        dataLayer.infowindow.set('template_type', 'mustache');
+                        dataLayer.infowindow.set('template', popupTemplate);  
+        });
         //
         // Initialize the checkboxes: add an event handler to watch for changes.
         //
@@ -213,17 +217,7 @@ unidentified attack</div></li>
       }
     </script>
       
-        <script>
-            var dataLayer;
-            $(document).ready(function () {cartodb.createVis('map', 'https://thenewschool.carto.com/u/smitg916/api/v2/viz/f3ac1254-fc7d-11e6-afd7-0e98b61680bf/viz.json',{zoom: 7})
-  .done(function (vis, layers) {
-      dataLayer = layers[1].getSubLayer(0);
-      var popupTemplate = '<div class="cartodb-popup v2"> <a href="#close" class="cartodb-popup-close-button close">x</a> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">A(n) {{attack_or_disruption}} in the governorate of {{governorate}} on {{attack_date}} at the {{facility_name}} facility <a href="{{report_link}}" target="_blank">as reported by {{report_org}}. </div> </div> <div class="cartodb-popup-tip-container"></div> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">Reported combatant(s): {{combatant_1}} </div> <div>Total killed: {{tot_k}}</div> <div>Total injured: {{tot_i}}</div><div> </div><div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content"> </div><div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">Description: {{description}}</div> </div>';
-                        dataLayer.infowindow.set('template_type', 'mustache');
-                        dataLayer.infowindow.set('template', popupTemplate);
-      });
-  });
-      </script>
+       
       
           <!-- MANUAL INPUT FOR HOVER INFOWINDOW CODE // May need later
            
