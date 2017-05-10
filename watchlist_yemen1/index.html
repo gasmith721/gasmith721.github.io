@@ -1,28 +1,4 @@
-<!doctype html>
-<html>
-  <head>
-         
-       <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <!--
-    Load CartoDB's code so we can pull in our CartoDB maps.
-    -->
-   <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
-<script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
-    
-          <link rel="stylesheet" type="text/css"
-      href="https://fonts.googleapis.com/css?family=Cardo">
-          
-                  <link rel="stylesheet" type="text/css"
-      href="https://fonts.googleapis.com/css?family=Cuprum">
-          
-                       <link rel="stylesheet" type="text/css"
-      href="https://fonts.googleapis.com/css?family=Georgia">
-          
-                       <link rel="stylesheet" type="text/css"
-      href="https://fonts.googleapis.com/css?family=Garamond">
-          
-    <style>
-        
+
 #header {
     position: fixed;
     display: flex;
@@ -30,7 +6,7 @@
     z-index:5;
     overflow: hidden;
     height: 70px;
-    background-color: rgba(0,0,0,.35);
+    background-color: rgba(0,0,0,.33);
     justify-content: center;
     vertical-align: middle;
  }
@@ -78,7 +54,6 @@ html, body {
             color: #b00836; 
             text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black
       }
-
 /* style for tabs */
       ul.tab {
             list-style-type: none;
@@ -96,7 +71,7 @@ html, body {
             padding: 14px 16px;
             text-decoration: none;
             transition: 0.2s;
-            font-size: 20px;
+            font-size: 18px;
         }
         ul.tab li a:hover {
             font-weight: bold;
@@ -122,16 +97,28 @@ html, body {
             text-align: center;
             border: solid 1px;
         }
-
         #panel {
             margin: 20px;
             display: none;        
         }
       
+      #navlist li {
+display:inline;
+list-style-type:none;
+padding-left: 5px;
+padding-top: 500px;
+font-family: Cardo;
+align-content: left;
+color: #900C3F;
+        }
+
+      
     </style>
   </head>
   <body>
      
+      <!--    BANNER HEADER -->
+    
       <div id="header">
          <a href="http://watchlist.org/" target="_blank"</a>
       <img style ="vertical-align:middle" img src="http://watchlist.org/wp-content/uploads/header-logo.png" width="360" height="70"></div>
@@ -139,8 +126,11 @@ html, body {
 
     <div id="map"> 
       
+      
+     
+       <!--    POINTS LEGEND -->
 
-  <div class="cartodb-legend" style="position: absolute; left: 1300px;  width: 135px; top:600px; padding: 10px; z-index: 99; bottom: auto;;">
+  <div class="cartodb-legend" style="position: absolute; left: 1295px;  width: 145px; top:370px; padding: 10px; z-index: 99; bottom: auto;;">
       
   <div class="legend-title" style="font-family: Cardo; font-weight: bold; text-align: center; color: black; font-size: 14px; text-transform: none;" >Health Facility Attacks</div> 
   
@@ -159,27 +149,58 @@ unidentified attack</div></li>
   </ul>
 </div>	  
 	  </div>
-
-         <script src="https://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
   
- <script type="template/html" id="tooltip_template">
-          <div class="cartodb-popup v2">
-            <a href="#close" class="cartodb-popup-close-button close">x</a>
-            <div class="cartodb-popup-content-wrapper">
-              <div class="cartodb-popup-content">
-                <div>{{name}}</div>
-                <img style="width: 100%;" src="{{media_1}}" />
-              </div>
-            </div>
-            <div class="cartodb-popup-tip-container"></div>
-          </div>
-        </script>
+   <!--    POLYGON LEGEND -->
+  
+  <div class="cartodb-legend" style="position: absolute; left: 1290px;  width: 160px; top:550px; padding: 10px; z-index: 99; bottom: auto;;">
+      
+  <div class="legend-title" style="font-family: Cardo; font-weight: bold; text-align: center; color: black; font-size: 14px; text-transform: none;" >% of Facilities Operating at Diminished Capacity</div> 
+  
+ <div style="font-family: Cardo; font-size: 12px; color: #900C3F; text-align: center;"</div>
+ 
+  
+<ul class="legend-list">
+    <li class="Legend-categoryListItem u-flex u-justifySpace u-alignCenter">
+      <p class="Legend-categoryTitle CDB-Text CDB-Size-small u-upperCase u-ellipsis" title="75% +">75% +</p>
+      
+        <span class="Legend-categoryCircle" style="opacity:1; background: #ea052b;"></span>
+      
+    </li>
+  
+    <li class="Legend-categoryListItem u-flex u-justifySpace u-alignCenter">
+      <p class="Legend-categoryTitle CDB-Text CDB-Size-small u-upperCase u-ellipsis" title="50%-75%">50%-75%</p>
+      
+        <span class="Legend-categoryCircle" style="opacity:1; background: #f5666f;"></span>
+      
+    </li>
+  
+    <li class="Legend-categoryListItem u-flex u-justifySpace u-alignCenter">
+      <p class="Legend-categoryTitle CDB-Text CDB-Size-small u-upperCase u-ellipsis" title="25%-49%">25%-49%</p>
+      
+        <span class="Legend-categoryCircle" style="opacity:1; background: #e3a0a1;"></span>
+      
+    </li>
+  
+    <li class="Legend-categoryListItem u-flex u-justifySpace u-alignCenter">
+      <p class="Legend-categoryTitle CDB-Text CDB-Size-small u-upperCase u-ellipsis" title="Less than 25%">Less than 25%</p>
+      
+        <span class="Legend-categoryCircle" style="opacity:1; background: #eeefe4;"></span>
+      
+    </li>
+  
+
+
+<font size="1">
+<p style ="padding-top: 10px; color: black;"> Source: <a href="https://reliefweb.int/sites/reliefweb.int/files/resources/YEMEN%202017%20HNO_Final.pdf"> UNOCHA HNO 2017 </a> 	</p>
+  </div>
+  </div>
+       
+  <!--    GET MAP FROM CARTO -->
   
     <script>
-          // Initialize map from CartoDB //
      
           var dataLayer;
-            $(document).ready(function () {cartodb.createVis('map', 'https://thenewschool.carto.com/u/smitg916/api/v2/viz/f3ac1254-fc7d-11e6-afd7-0e98b61680bf/viz.json',
+            $(document).ready(function () {cartodb.createVis('map', 'https://thenewschool.carto.com/u/smitg916/api/v2/viz/2e867fb3-140e-4559-a8d3-9a76fed7a5e1/viz.json',
                {
               zoom: 7,
               search: false,
@@ -187,10 +208,34 @@ unidentified attack</div></li>
               cartodb_logo:false,
               center_lat: 15.947798,
               center_lon: 46.9255705,
-              // layer_selector:true //
+              layer_selector:true,
+              zoom: true,
             })
+                                           
+
+                                           
+// POLYGON POP-UPS 
+/*<div class="CDB-infowindow CDB-infowindow--dark js-infowindow" style="background:#2E3C43">
+  <div class="CDB-infowindow-close js-close"></div>
+  <div class="CDB-infowindow-container">
+    <div class="CDB-infowindow-bg">
+      <div class="CDB-infowindow-inner">
+        <ul class="CDB-infowindow-list js-content">
+        </ul>
+      </div>
+    </div>
+    <div class="CDB-hook">
+      <div class="CDB-hook-inner"></div>
+    </div>
+  </div>
+</div>
+*/
+
+                                           
+<!--    POINTS POP-UPS -->
+                                           
   .done(function (vis, layers) {
-      dataLayer = layers[1].getSubLayer(0);
+      dataLayer = layers[1].getSubLayer(2);
       var popupTemplate = '<div id="popup"><div class="cartodb-popup v2"> <a href="#close" class="cartodb-popup-close-button close">x</a> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">A(n) {{attack_or_disruption}} in the governorate of {{governorate}} on {{attack_date}} at the {{facility_name}} facility <a href="{{report_link}}" target="_blank">as reported by {{report_org}}. </div> </div> <div class="cartodb-popup-tip-container"></div> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">Reported combatant(s): {{combatant_1}} </div> <div>Total killed: {{tot_k}}</div> <div>Total injured: {{tot_i}}</div><div> </div><div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content"> </div><div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">Description: {{description}}</div> </div>';
                         dataLayer.infowindow.set('template_type', 'mustache');
                         dataLayer.infowindow.set('template', popupTemplate);
@@ -318,16 +363,36 @@ unidentified attack</div></li>
         <li><a href="#" class="tablinks" onclick="openCity(event,'Home')">HOME</a></li>
         <li><a href="#" class="tablinks" onclick="openCity(event,'Pollution')"></a>
         </li>               
-        <li><a href="#" class="tablinks" onclick="openCity(event,'Methods')">METHODS</a>
+        <li><a href="#" class="tablinks"onclick="openCity(event,'Methods')">METHODS</a>
         </li>
         </ul>
         
 
 <!-- Tab #1 - Home        -->
         <div id="Home" class="tabcontent">
-            <p style="font-weight: bold; font-size: 16px;"> The ongoing conflict in Yemen, which escalated sharply in March 2015, has led to the near collapse of the country's already fragile health care system. The Office for the Coordination of Humanitarian Affairs (OCHA) reported in June 2016 that 50 percent of hospitals are either not functioning or partially functioning and 25 percent of all health facilities have shut down due to damages, or shortages of staff, medicines, and other resources. </p>
-          <p>This has vastly reduced children’s access to health resources and has caused thousands of deaths from treatable diseases.
+            <p style="font-size: 14px;"> The ongoing conflict in Yemen, which escalated sharply in March 2015, has led to the near collapse of the country's already fragile health care system. The Office for the Coordination of Humanitarian Affairs (OCHA) reported in June 2016 that 50 percent of hospitals are either not functioning or partially functioning and 25 percent of all health facilities have shut down due to damages, or shortages of staff, medicines, and other resources. </p>
+          <p style="font-size: 14px;">This has vastly reduced children’s access to health resources and has caused thousands of deaths from treatable diseases.
 </p>
+              <p style="color: white;">a</p>
+           <p style="font-size: 14px;">Filter individual attacks by type:</p>
+          <!-- POINTS FILTER CHECKBOXES -->
+      
+            <div> <ul id="navlist">
+      <li id="active"><a href="#" id="current"></a>
+        <label for="airstrike">airstrike</label>
+        <input id="airstrike" type="checkbox" class="airstrike-checkbox" />
+      </li>
+      <li>
+        <label for="ground">ground attack</label>
+        <input id="ground" type="checkbox" class="ground-checkbox" />
+      </li>
+      <li>
+        <label for="indiscriminate">unidentified attack</label>
+        <input id="indiscriminate" type="checkbox" class="indiscriminate-checkbox" />
+      </li>
+    </ul>
+          </div>
+
             
 <!--            Tab #1 End-->
         
@@ -429,20 +494,27 @@ unidentified attack</div></li>
             
 <!--        Tab #3 - Methods            -->
         <div id="Methods" class="tabcontent">
-         
-            <p>
-            Include methods and sources.
-</p>
-                    
-            
+        <p>In constructing a geographical representation of the conflict, Watchlist has 
+         compiled data and statistics from reports by a number of different organizations (OCHA, WHO, MSF, other NGOs, 
+	 media outlets, etc.) in order to provide a spatial overview of individual attacks and disruptions, as well as 
+	 the operational levels of health facilities at the governorate level (to be added to the map below later). The 
+	 period covered in this analysis is approximately March 2015 thru April 2016.</p>
+	 <p>Over this period, and as detailed in the map below, Watchlist has identified 52 instances 
+         of an attack or a disruption that is supported by official reporting. Details about these incidents, including links to the 
+         supporting reports, can be accessed by clicking directly on any of the data points on the map. The incidents can also be filtered by 
+         attack type by choosing any of the three checkboxes - airstrike, ground attack, or unidentified attack - located above 
+         the map at the top left.</p> 
+	 <p>Due to gaps in the reporting process caused by the overall difficulty of data collection in Yemen, 
+	 these incidents make up only a fraction of the total number of health facility attacks.</p>
+
             
         </div>
-<!--        Ends Tab #4            -->
-            
-              </div>
-<!--        ends fragment-3     -->
+<!--        ENDS METHODS TAB            -->
+        </div>  
+           
+<!--        ends fragment     -->
 
-
+        </div> 
  
 <!--    ends sidebox        -->
       
