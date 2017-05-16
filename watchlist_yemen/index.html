@@ -1,185 +1,456 @@
 <!doctype html>
 <html>
-  <head>
-     <header class="main-header" role="banner">
-  <img src="http://watchlist.org/wp-content/uploads/header-logo.png" width="600" height="125" alt="Banner Image"/>
-        <div><div style="font-size: 48px; font-family: Garamond; font-weight: bold; color: #b00836; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -.5px black;padding-bottom: 5px;">Y E M E N</div> 
-            <div><div style="font-size: 18px; font-family: Cardo; padding-bottom: 20px">Research & Mapping: <a href="http://watchlist.org/"target="blank"><font color="#0000FF">Watchlist on Children & Armed Conflict</font></a>
-            </div>
-            </header>
-         
-       <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <!--
-    Load CartoDB's code so we can pull in our CartoDB maps.
-    -->
-   <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
-<script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
+
+<head>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<!-- Load Carto's code so we can pull in our Carto maps. -->
+
+  <!-- EB removed this: it overrides too many styles -->
+  <!-- <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodbui/assets/4.6.25/stylesheets/deep_insights.css" /> -->
     
-          <link rel="stylesheet" type="text/css"
+<link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+    
+  <!-- EB removed this: it's going to break the legend a bit, but this code overrides too many styles -->
+  <!-- <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodbui/assets/4.6.25/stylesheets/public_editor3.css" /> -->
+       
+ <link rel="stylesheet" type="text/css"
       href="https://fonts.googleapis.com/css?family=Cardo">
-          
-                  <link rel="stylesheet" type="text/css"
-      href="https://fonts.googleapis.com/css?family=Cuprum">
-          
-                       <link rel="stylesheet" type="text/css"
-      href="https://fonts.googleapis.com/css?family=Georgia">
-          
-                       <link rel="stylesheet" type="text/css"
-      href="https://fonts.googleapis.com/css?family=Garamond">
-          
-    <style>
-        
-.main-header {
-    text-align: center; 
-    padding:1px; 
-    border:1px solid #021a40; 
-    background-color: #eff1f4;
-    margin-right: 1.5%;
-   -moz-box-shadow:    inset 0 0 50px #000000;
-   -webkit-box-shadow: inset 0 0 50px #000000;
-   box-shadow:         inset 0 0 50px #000000;
-}
-      
-        html, body {
-        height: 100%;
-        margin: 0;
-        padding: 5px;
-        width: 100%;
-      }
-         
-    h1 {
-      text-align: left; 
-      font-family: Garamond; 
-      font-size: 34px; 
-      padding-left: 40px; 
-      padding-top: 25px}
-      
-    p {
-     font-family: cardo; 
-     font-size: 15px;
-     padding-right: 160px;
-     padding-left: 40px;
-      }
-        
-      #map {
-        height: 70%;
-        width: 87%;
-        resize: inherit;
-        position: absolute;
-        padding-left: 40px;
-        padding-bottom: 25px;
-        
-      }
-         
-#navlist li {
-display:inline;
-list-style-type:none;
-padding-left: 5px;
-padding-top: 500px;
-font-family: Cardo;
-align-content: center;
-color: #900C3F;
-        }
-        
-    </style>
-  </head>
-  <body>
-     <h1>Conflict Overview</h1>
-            <p>The ongoing conflict in Yemen, which escalated sharply in March 2015, 
-	        has led to the near collapse of the country's already fragile health care system. 
-		The Office for the Coordination of Humanitarian Affairs (OCHA) reported in June 2016 
-		that 50 percent of hospitals are either not functioning or partially functioning and 
-		25 percent of all health facilities have shut down due to damages, or shortages of staff, 
-		medicines, and other resources. According to the World Health Organization (WHO), in the 
-		period between March 2015 and March 2016, more than 100 health facilities had been attacked. 
-		In addition, a November 2016 WHO survey <a href="http://www.emro.who.int/media/news/survey-reveals-extent-of-damage-to-yemens-health-system.html" target="_blank"><font color="#0000FF">revealed</font></a> 
-		that, in total, 274 health facilities have been damaged - 69 completely and 205 partially - 
-		as a result of the conflict.</p>
-             <p>Many health care facilities have been indirectly damaged during conflict; however, many 
-		have also been directly targeted by parties to conflict. 
-		Medecins Sans Frontiers (MSF) and other humanitarian organizations have systematically 
-		shared the GPS coordinates of hospitals in which they work with parties involved in the conflict, 
-		in order to prevent unintended strikes, particularly through aerial bombing.</p> 
-		<p>However, in many cases, this has been to no avail. Most commonly, hospitals have been directly hit 
-		by airstrikes carried-out by the Saudi-led Coalition. However, Houthis, Yemeni forces, and other 
-		armed groups have also looted and occupied hospitals, shot at and abducted ambulances, and denied 
-		passage at checkpoints to persons attempting to reach hospitals to receive lifesaving treatment or 
-		deliver essential medicines and supplies.</p>
     
-    <h1>Spatial Analysis</h1>
-      <p>In constructing a geographical representation of the conflict, Watchlist has 
-         compiled data and statistics from reports by a number of different organizations (OCHA, WHO, MSF, other NGOs, 
-	 media outlets, etc.) in order to provide a spatial overview of individual attacks and disruptions, as well as 
-	 the operational levels of health facilities at the governorate level (to be added to the map below later). The 
-	 period covered in this analysis is approximately March 2015 thru April 2016.</p>
-	 <p>Over this period, and as detailed in the map below, Watchlist has identified 52 instances 
-         of an attack or a disruption that is supported by official reporting. Details about these incidents, including links to the 
-         supporting reports, can be accessed by clicking directly on any of the data points on the map. The incidents can also be filtered by 
-         attack type by choosing any of the three checkboxes - airstrike, ground attack, or unidentified attack - located above 
-         the map at the top left.</p> 
-	 <p  style="padding-bottom:20px;">Due to gaps in the reporting process caused by the overall difficulty of data collection in Yemen, 
-	 these incidents make up only a fraction of the total number of health facility attacks.</p>
+<link rel="stylesheet" type="text/css"
+      href="https://fonts.googleapis.com/css?family=Garamond">
+
+    
+<style>
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+#header {
+    position: fixed;
+    display: flex;
+    width: 125%;
+    z-index:5;
+    overflow: hidden;
+    height: 70px;
+    background-color: rgba(0,0,0,.33);
+    justify-content: center;
+    vertical-align: middle;
+}
+    
+.sidepanel {
+    background-color: #FFF;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 25%;
+    height: 100%;
+    overflow: auto;
+    display: flex;
+    z-index: 5;
+    border-right: solid #585858 1px;
+}
+    
+.wrapper {
+    display: block;
+    padding: 4px 30px 0 30px; 
+}    
+ 
+#title-text {
+    border-bottom: 3px solid #b00836;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+    font-size: 25px; 
+    font-family: Garamond;
+    color: #b00836; 
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black
+}
+
+
+.buttons {
+    position: absolute;
+  /* EB: left to a percentage */
+    left: 33%;
+     top: 100px;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    color: black; 
+    border: 1.5px solid #b00836;
+    padding: 7px;
+}
+
+.buttons:hover {
+    background-color: #b00836;
+    color: white;
+}
+
+.leaflet-left {
+    left: 25%;
+    top: 66px;
+    position: absolute;
+    }
+    
+.checkbox-container {
+        position: absolute;
+        top: 450px;
+        right: 55px;
+        background-color: lightgray;
+      }
+    
+.checkbox-container1 {
+        position: absolute;
+        top: 200px;
+        right: 70px;
+        background-color: lightgray;
+      }     
+    
+ <!-- STYLE FOR ACCORDION -->
+
+* {
+  box-sizing:border-box;
+}
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700);
+body { 
+
+  font-family:'Lato';
+}
+.heading-primary {
+  font-size:2em;
+  padding:2em;
+  text-align:center;
+}
+.accordion dl,
+.accordion-list {
+   border:1px solid #ddd;
+   &:after {
+       content: "";
+       display:block;
+       height:1em;
+       width:100%;
+       background-color:darken(#b00836, 50%);
+     }
+}
+.accordion dd,
+.accordion__panel {
+   background-color:#eee;
+   font-size:1em;
+   line-height:1.5em; 
+}
+.accordion p {
+  padding:1em 2em 1em 2em;
+}
+
+.accordion {
+    position:relative;
+    background-color:#eee;
+}
+.container {
+  max-width:960px;
+  margin:0 auto;
+  padding:2em 0 2em 0;
+}
+.accordionTitle,
+.accordion__Heading {
+ background-color:#b00836; 
+   text-align:center;
+     font-weight:700; 
+          padding:2em;
+          display:block;
+          text-decoration:none;
+          color:#fff;
+          transition:background-color 0.5s ease-in-out;
+  border-bottom:1px solid darken(#38cc70, 5%);
+  &:before {
+   content: "+";
+   font-size:1.5em;
+   line-height:0.5em;
+   float:left; 
+   transition: transform 0.3s ease-in-out;
+  }
+  &:hover {
+    background-color:darken(#38cc70, 50%);
+  }
+}
+.accordionTitleActive, 
+.accordionTitle.is-expanded {
+   background-color:darken(#38cc70, 50%);
+    &:before {
+     
+      transform:rotate(-225deg);
+    }
+}
+.accordionItem {
+    height:auto;
+    overflow:hidden; 
+    //SHAME: magic number to allow the accordion to animate
+    
+     max-height:50em;
+    transition:max-height 1s;   
+ 
+    
+    @media screen and (min-width:48em) {
+         max-height:15em;
+        transition:max-height 0.5s
+        
+    }
       
-       <ul id="navlist">
+}
+ 
+.accordionItem.is-collapsed {
+    max-height:0;
+}
+.no-js .accordionItem.is-collapsed {
+  max-height: auto;
+}
+.animateIn {
+     animation: accordionIn 0.45s normal ease-in-out both 1; 
+}
+.animateOut {
+     animation: accordionOut 0.45s alternate ease-in-out both 1;
+}
+@keyframes accordionIn {
+  0% {
+    opacity: 0;
+    transform:scale(0.9) rotateX(-60deg);
+    transform-origin: 50% 0;
+  }
+  100% {
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+@keyframes accordionOut {
+    0% {
+       opacity: 1;
+       transform:scale(1);
+     }
+     100% {
+          opacity:0;
+           transform:scale(0.9) rotateX(-60deg);
+       }
+}    
+
+<!-- END STYLE FOR ACCORDION -->    
+    
+</style>
+    
+</head>
+
+<body>
+
+<!-- HEADER -->    
+    
+<div id="header">
+    <a href="http://watchlist.org/" target="_blank"> <img src="http://watchlist.org/wp-content/uploads/header-logo.png" width="360" height="70"> </a>
+    </div>     
+    
+<!-- MAP -->    
+    
+<div id="map"></div>
+
+<!-- CHECKBOX FOR LAYERS -->  
+    
+<ul class="checkbox-container">
+        <li> <label for="points">individual attacks</label>
+    <input id="points" type="checkbox" class="points-checkbox" checked="true" />
+        </li>
+      <li><label for="poly">governorate data</label>
+    <input id="poly" type="checkbox" class="poly-checkbox" checked="true" />
+      </li>
+    </ul>
+    
+<!-- CHECKBOX FOR FILTERING POINTS -->  
+    
+   <ul class="checkbox-container1">
       <li id="active"><a href="#" id="current"></a>
         <label for="airstrike">airstrike</label>
         <input id="airstrike" type="checkbox" class="airstrike-checkbox" />
       </li>
       <li>
-        <label for="ground">ground attack</label>
+        <label for="ground">ground</label>
         <input id="ground" type="checkbox" class="ground-checkbox" />
       </li>
       <li>
-        <label for="indiscriminate">unidentified attack</label>
+        <label for="indiscriminate">unidentified</label>
         <input id="indiscriminate" type="checkbox" class="indiscriminate-checkbox" />
       </li>
     </ul>
+            
+    
+<!-- ZOOM BUTTONS -->
+    
+  <!-- EB restructured this -->
+  <div class="buttons">   
+    <button class="Yemen">Yemen</button>
+    <button class="Saada">Sa'ada</button>
+    <button class="Hajjah">Hajjah</button>
+    <button class="Sanaa">Sana'a</button>
+    <button class="Taiz">Taiz</button>
+    <button class="Aden">Aden</button>
+  </div>
+
+ <!--    POINTS LEGEND -->
+
+  <div class="cartodb-legend" style="position: absolute; width: 150px; left: 40%; padding: 10px;">
       
-<div id="map"> 
-      <div class="cartodb-legend" style="bottom: 50px;">
-      
-  <div class="legend-title" style="font-family: Cardo; font-weight: bold; color: black; font-size: 15px; text-transform: none;" >Health Facility Attacks</div> 
-  
- <div style="font-family: Cardo; font-size: 12px; color: black; text-align: center; padding-bottom: 15px;">(March 2015 - June 2016)</div>
-  
+  <div class="legend-title" style="font-family: Cardo; font-weight: bold; text-align: center; color: black; font-size: 14px; text-transform: none;" >Health Facility Attacks (Mar 2015 - Jun 2016)</div> 
+   
 <ul class="legend-list">
-      <li><div class="image" style="font-size: 13px; font-weight: bold; text-transform: lowercase; margin-bottom: 10px; font-family: Cardo; color:#900C3F;">
+      <li><div class="image" style="font-size: 13px; font-weight: bold; text-transform: lowercase; margin-bottom: 10px; font-family: Cardo; color:#b00836;">
 <a href=""><img style= "vertical-align:middle" img src="https://d30y9cdsu7xlg0.cloudfront.net/png/163336-200.png" width="20" height="20" alt=""></a> airstrike</div></li>
       
-    <li><div class="bullet" style="font-size: 13px; font-weight: bold; text-transform: lowercase; margin-bottom: 10px; font-family: Cardo; color:#900C3F; font-weight: bold">
+    <li><div class="bullet" style="font-size: 13px; font-weight: bold; text-transform: lowercase; margin-bottom: 10px; font-family: Cardo; color:#b00836; font-weight: bold">
 <a href=""><img style= "vertical-align:middle" img src="https://d30y9cdsu7xlg0.cloudfront.net/png/659093-200.png" width="20" height="20" alt=""></a> ground attack</div></li>
       
-    <li><div class="bullet" style="font-size: 13px; font-weight: bold; text-transform: lowercase; font-family: Cardo; color:#900C3F; font-weight: bold">
+    <li><div class="bullet" style="font-size: 13px; font-weight: bold; text-transform: lowercase; font-family: Cardo; color:#b00836; font-weight: bold">
 <a href=""><img style= "vertical-align:middle" img src="https://d30y9cdsu7xlg0.cloudfront.net/png/756341-200.png" width="20" height="20" alt=""></a>
 unidentified attack</div></li>
-  </ul>
-</div>	  
-	  </div>
+  </ul>	  
+	 
+<!--    POLYGON LEGEND -->
+  
+ <div class="legend-title" style="font-family: Cardo; font-weight: bold; text-align: center; color: black; font-size: 13px; padding-top: 20px; text-transform: none;" >% of Health Facilities Not (or Partially) Functioning per Governorate</div>
+            
+<li class="Legend-categoryListItem u-flex u-justifySpace u-alignCenter">
+      <p class="Legend-categoryTitle CDB-Text CDB-Size-small u-upperCase u-ellipsis" style="font-size: 12px; color: grey;" title="75% +">>75%</p>
+      
+        <span class="Legend-categoryCircle" style="opacity:1; background: #ea052b;"></span></li>
+  
+    <li class="Legend-categoryListItem u-flex u-justifySpace u-alignCenter">
+      <p class="Legend-categoryTitle CDB-Text CDB-Size-small u-upperCase u-ellipsis" style="font-size: 12px; color: grey;" title="50%-75%">50%-75%</p>
+      
+        <span class="Legend-categoryCircle" style="opacity:1; background: #f5666f;"></span></li>
+  
+    <li class="Legend-categoryListItem u-flex u-justifySpace u-alignCenter">
+      <p class="Legend-categoryTitle CDB-Text CDB-Size-small u-upperCase u-ellipsis" style="font-size: 12px; color: grey;" title="25%-49%">25%-49%</p>
+      
+        <span class="Legend-categoryCircle" style="opacity:1; background: #e3a0a1;"></span></li>
+  
+    <li class="Legend-categoryListItem u-flex u-justifySpace u-alignCenter">
+      <p class="Legend-categoryTitle CDB-Text CDB-Size-small u-upperCase u-ellipsis" style="font-size: 12px; color: grey;" title="Less than 25%"><25%</p>
+      
+        <span class="Legend-categoryCircle" style="opacity:1; background: #eeefe4;"></span></li>
+  
+<font size="1">
+<p style ="padding-top: 10px; color: black;"> Source: <a href="https://reliefweb.int/sites/reliefweb.int/files/resources/YEMEN%202017%20HNO_Final.pdf"> UNOCHA HNO 2017 </a> 	</p>
+      </font>
+    </div>
 
-         <script src="https://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
-    <script>
-      var dataLayer;
-      $(document).ready(function () {
+<!-- SIDEPANEL -->    
+    
+<div id="side-box" class="sidepanel" style="display:block;">
+    <div class="wrapper">
+        <div id="title-text">
+            <h1>YEMEN</h1>
+                    </div>
+<!-- ACCORDION -->            
+
+<div class="container">
+  <div class="accordion">
+    <dl>
+      <dt>
+        <a href="#accordion1" aria-expanded="false" aria-controls="accordion1" class="accordion-title accordionTitle js-accordionTrigger">Home</a>
+              </dt>
+          <dd class="accordion-content accordionItem is-collapsed" id="accordion1" aria-hidden="true">
+            <p>The ongoing conflict in Yemen, which escalated sharply in March 2015, has led to the near collapse of the country's already fragile health care system. The Office for the Coordination of Humanitarian Affairs (OCHA) reported in June 2016 that 50 percent of hospitals are either not functioning or partially functioning and 25 percent of all health facilities have shut down due to damages, or shortages of staff, medicines, and other resources.</p>
+            <p>This has vastly reduced children's access to health resources and has caused thousands of deaths from treatable diseases.</p>
+              </dd>
+      <dt>
+        <a href="#accordion2" aria-expanded="false" aria-controls="accordion2" class="accordion-title accordionTitle js-accordionTrigger">
+                  Second Accordion heading</a>
+              </dt>
+              <dd class="accordion-content accordionItem is-collapsed" id="accordion2" aria-hidden="true">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu interdum diam. Donec interdum porttitor risus non bibendum. Maecenas sollicitudin eros in quam imperdiet placerat. Cras justo purus, rhoncus nec lobortis ut, iaculis vel ipsum. Donec dignissim arcu nec elit faucibus condimentum. Donec facilisis consectetur enim sit amet varius. Pellentesque justo dui, sodales quis luctus a, iaculis eget mauris. </p>
+                <p>Aliquam dapibus, ante quis fringilla feugiat, mauris risus condimentum massa, at elementum libero quam ac ligula. Pellentesque at rhoncus dolor. Duis porttitor nibh ut lobortis aliquam. Nullam eu dolor venenatis mauris placerat tristique eget id dolor. Quisque blandit adipiscing erat vitae dapibus. Nulla aliquam magna nec elementum tincidunt.</p>
+              </dd>
+              <dt>
+                <a href="#accordion3" aria-expanded="false" aria-controls="accordion3" class="accordion-title accordionTitle js-accordionTrigger">
+                  Third Accordion heading
+                </a>
+              </dt>
+              <dd class="accordion-content accordionItem is-collapsed" id="accordion3" aria-hidden="true">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu interdum diam. Donec interdum porttitor risus non bibendum. Maecenas sollicitudin eros in quam imperdiet placerat. Cras justo purus, rhoncus nec lobortis ut, iaculis vel ipsum. Donec dignissim arcu nec elit faucibus condimentum. Donec facilisis consectetur enim sit amet varius. Pellentesque justo dui, sodales quis luctus a, iaculis eget mauris. </p>
+                <p>Aliquam dapibus, ante quis fringilla feugiat, mauris risus condimentum massa, at elementum libero quam ac ligula. Pellentesque at rhoncus dolor. Duis porttitor nibh ut lobortis aliquam. Nullam eu dolor venenatis mauris placerat tristique eget id dolor. Quisque blandit adipiscing erat vitae dapibus. Nulla aliquam magna nec elementum tincidunt.</p>
+              </dd>
+            </dl>
+          </div>
+        </div>
+    </div>
+    
+
+
+
         
-        // Initialize map from CartoDB: create the map and store the data layer for later
-        //
-        cartodb.createVis('map', 'https://thenewschool.carto.com/u/smitg916/api/v2/viz/f3ac1254-fc7d-11e6-afd7-0e98b61680bf/viz.json', {zoom:7})
-          .done(function (vis, layers) {
-               vis.getNativeMap().addControl(L.control.zoom());
-            // Store the data layer for later:
-            //  * layers[0] is the base layer (eg OpenStreetMap)
-            //  * layers[1] is where all of your data layers go, and they're stored as "sublayers". The first one is numbered 0, the second is 1, etc. In this case we're getting the first sublayer.
-            dataLayer = layers[1].getSubLayer(0);
-        var popupTemplate = '<div class="cartodb-popup v2"> <a href="#close" class="cartodb-popup-close-button close">x</a> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">A(n) {{attack_or_disruption}} in the governorate of {{governorate}} on {{attack_date}} at the {{facility_name}} facility <a href="{{report_link}}" target="_blank">as reported by {{report_org}}. </div> </div> <div class="cartodb-popup-tip-container"></div> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">Reported combatant(s): {{combatant_1}} </div> <div>Total killed: {{tot_k}}</div> <div>Total injured: {{tot_i}}</div><div> </div><div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content"> </div><div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">Description: {{description}}</div> </div>';
-                        dataLayer.infowindow.set('template_type', 'mustache');
-                        dataLayer.infowindow.set('template', popupTemplate);  
+<script>
+
+<!-- GET MAP FROM CARTO -->
+    
+var pointsLayer;
+var polyLayer;
+  var leafletMap;
+    
+    $(document).ready(function () {
+        cartodb.createVis('map', 'https://thenewschool.carto.com/u/smitg916/api/v2/viz/2e867fb3-140e-4559-a8d3-9a76fed7a5e1/viz.json', {
+            zoom: 7,
+            search: false,
+            cartodb_logo:false,
+            center_lat: 15.947798,
+            center_lon: 46.9255705,
+            layer_selector: true,
+            scrollwheel: true,    
+            }) 
+        
+            .done(function (vis, layers) {
+                vis.getNativeMap().addControl(L.control.zoom());
+                leafletMap = vis.getNativeMap();
+                polyLayer = layers[1].getSubLayer(0);
+                pointsLayer = layers[1].getSubLayer(1);
+            
+<!-- SCRIPT FOR LAYER CHECK BUTTONS -->           
+    
+ $('.points-checkbox').change(function () {
+          if ($('.points-checkbox').prop('checked')) {
+                      pointsLayer.show();
+          }
+          else {
+                  pointsLayer.hide();
+          }
         });
-        //
-        // Initialize the checkboxes: add an event handler to watch for changes.
-        //
-        // Call updateSql on any change.
-        //
-        $('.airstrike-checkbox').change(function () {
+        
+$('.poly-checkbox').change(function () {
+          if ($('.poly-checkbox').prop('checked')) {
+                     polyLayer.show();
+          }
+          else {
+                      polyLayer.hide();
+          }
+        });
+            
+            
+<!-- SCRIPT FOR POINTS FILTER CHECK BUTTONS -->           
+    
+/*
+$('.airstrike-checkbox').change(function () {
           updateSql();
         });
         $('.ground-checkbox').change(function () {
@@ -189,14 +460,12 @@ unidentified attack</div></li>
           updateSql();
         });
       });
-      //
+     
       // Update the SQL for the layer based on the current state of the checkboxes.
-      //
-      function updateSql() {
+         function updateSql() {
+        var sql = "SELECT * FROM yemen_attack_report_points1";
         var whereConditions = [];
-        // Since there are more checkboxes we use a technique that is a bit different from previous examples. We gather all the parts of the WHERE clause in an array (whereConditions) based on which checkboxes are checked.
-        // If you were using this technique you would do the following for each checkbox
-        if ($('.airstrike-checkbox').prop('checked')) {
+       if ($('.airstrike-checkbox').prop('checked')) {
           whereConditions.push("attack_type = 'airstrike'");
         }
         if ($('.ground-checkbox').prop('checked')) {
@@ -205,7 +474,7 @@ unidentified attack</div></li>
         if ($('.indiscriminate-checkbox').prop('checked')) {
           whereConditions.push("attack_type = 'indiscriminate'");
         }
-        var sql = "SELECT * FROM yemen_attack_report_points1";
+        
         // If there are any whereConditions, we add WHERE to the SQL statement and the conditions
         if (whereConditions.length > 0) {
           // Then we combine them with ' OR ', so any of the conditions can be true.
@@ -213,89 +482,131 @@ unidentified attack</div></li>
         }
         // Leaving this console.log() here so we can make sure we get valid SQL.
         console.log(sql);
-        dataLayer.setSQL(sql);
-      }
-    </script>
-      
-       
-      
-          <!-- MANUAL INPUT FOR HOVER INFOWINDOW CODE // May need later
-           
-                dataLayer.setInteractivity('attack_or_disruption, governorate, facility_name, report_link, report_org, combatant_1, combatant_2, tot_k, tot_i, direct_indirect_attack, operator, town_city, district, attack_detail, description');
-      
-          position: 'bottom|right',
-          fields: [{attack or disruption: 'attack_or_disruption', governorate: 'governorate', facility name: 'facility_name', report link: 'report_link', reporting organization: 'report_org', combatant 1: 'combatant_1', combatant 2: 'combatant_2', total killed: 'tot_k', total injured: 'tot_i', direct/indirect attack: 'direct_indirect_attack', operator: 'operator', town/city: 'town_city', district: 'district', attack detail: 'attack_detail', description: 'description'}]
-                     --> 
-      
-      <!-- CARTO INFOWINDOW ORIGINAL CODE
-<div class="CDB-infowindow CDB-infowindow--dark js-infowindow" style="background:#2E3C43">
-  <div class="CDB-infowindow-close js-close"></div>
-  <div class="CDB-infowindow-container">
-    <div class="CDB-infowindow-bg">
-      <div class="CDB-infowindow-inner">
-        <ul class="CDB-infowindow-list js-content">
-          <li class="CDB-infowindow-listItem">
-              <h5 class="CDB-infowindow-title"</h5>
-       
-          </li>
-          <li class="CDB-infowindow-listItem">
-<h5 class="CDB-infowindow-subtitle">Overview:</h5>              
-<h5 class="CDB-infowindow-title">A(n) {{attack_or_disruption}} in the governorate of {{governorate}} on {{attack_date}} affecting the {{facility_name}} facility  <a href="{{report_link}}" target="_blank">as reported by {{report_org}}.</a></h5>
-            <h4 class="CDB-infowindow-title"></h4>
-          </li>
-          <li class="CDB-infowindow-listItem">
-              <h5 class="CDB-infowindow-subtitle">Other Details:</h5>
-            <h4 class="CDB-infowindow-title"></h4>
-         <li class="CDB-infowindow-listItem">
-              <h5 class="CDB-infowindow-subtitle">combatants</h5>
-            <h4 class="CDB-infowindow-title">{{combatant_1}}</h4>
-          </li>
- 
-            <h4 class="CDB-infowindow-title">{{combatant_2}}</h4>
-          </li>
-          <li class="CDB-infowindow-listItem">
-              <h5 class="CDB-infowindow-subtitle">Total killed</h5>
-            <h4 class="CDB-infowindow-title">{{tot_k}}</h4>
-          </li>
-          <li class="CDB-infowindow-listItem">
-              <h5 class="CDB-infowindow-subtitle">Total injured</h5>
-            <h4 class="CDB-infowindow-title">{{tot_i}}</h4>
-          </li>
-          <li class="CDB-infowindow-listItem">
-              <h5 class="CDB-infowindow-subtitle">Direct or Indirect Attack</h5>
-            <h4 class="CDB-infowindow-title">{{direct_indirect_attack}}</h4>
-          </li>
-          <li class="CDB-infowindow-listItem">
-              <h5 class="CDB-infowindow-subtitle">facility operator</h5>
-            <h4 class="CDB-infowindow-title">{{operator}}</h4>
-          </li>
-          <li class="CDB-infowindow-listItem">
-              <h5 class="CDB-infowindow-subtitle">Town &#x2F; City</h5>
-            <h4 class="CDB-infowindow-title">{{town_city}}</h4>
-          </li>
-          <li class="CDB-infowindow-listItem">
-              <h5 class="CDB-infowindow-subtitle">district</h5>
-            <h4 class="CDB-infowindow-title">{{district}}</h4>
-          </li>
-	      <li class="CDB-infowindow-listItem">
-              <h5 class="CDB-infowindow-subtitle">attack detail</h5>
-            <h4 class="CDB-infowindow-title">{{attack_detail}}</h4>
-          </li>
+        pointsLayer.setSQL(sql);
+      }           
+*/            
+            
+<!-- CUSTOM INFOWINDOW -->              
+                        
+   var popupTemplate = $('#tooltip_template').html();
           
-          <li class="CDB-infowindow-listItem">
-              <h5 class="CDB-infowindow-subtitle">detailed description</h5>
-            <h4 class="CDB-infowindow-title">{{description}}</h4>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="CDB-hook">
-      <div class="CDB-hook-inner"></div>
-    </div>
-  </div>
-</div>
--->
-      
+          // EB: this was using "dataLayer" which doesn't exist, I changed it to pointsLayer
+                        pointsLayer.infowindow.set('template_type', 'mustache');
+                        pointsLayer.infowindow.set('template', popupTemplate);
+                    });
+            });    
+            
+<!-- INFOWINDOWS FOR POINTS W/ EMBEDDED IMAGE -->
 
-  </body>
+ /*<script type="template/html" id="tooltip_template">
+    '<div id="popup">
+        <div class="cartodb-popup v2"> 
+        <a href="#close" class="cartodb-popup-close-button close">x</a>
+            <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">A(n) {{attack_or_disruption}} in the governorate of {{governorate}} on {{attack_date}} at the {{facility_name}} facility <a href="{{report_link}}" target="_blank">as reported by {{report_org}}. </div> </div> <div class="cartodb-popup-tip-container"></div> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">Reported combatant(s): {{combatant_1}} </div> <div>Total killed: {{tot_k}}</div> <div>Total injured: {{tot_i}}</div><div> </div><div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content"> </div><div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">Description: {{description}}</div> <div class="cartodb-popup-content-wrapper">
+              <div class="cartodb-popup-content">
+                <div>Media:</div>
+                <img style="width: 100%;" src="{{media_1}}" />
+              </div>
+            </div>
+            <div class="cartodb-popup-tip-container"></div>
+          </div> </div>';
+    
+
+            });
+*/
+
+<!-- SCRIPT FOR ZOOM BUTTONS -->
+  
+  // EB added this for Sana'a, you'll need to set the correct center and zoom
+  $('.Sanaa').click(function () {
+    leafletMap.setView([15.369445, 44.191007], 12);
+  });
+    
+ $('.Yemen').click(function () {
+    leafletMap.setView([15.552727, 48.516388], 7);
+  });    
+   
+ $('.Hajjah').click(function () {
+    leafletMap.setView([15.703040, 43.603930], 12);
+  });  
+    
+ $('.Saada').click(function () {
+    leafletMap.setView([16.950941, 43.747774], 12);
+  }); 
+    
+ $('.Taiz').click(function () {
+    leafletMap.setView([13.577589, 44.017799], 12);
+  }); 
+    
+ $('.Aden').click(function () {
+    leafletMap.setView([12.810655, 44.9451118], 12);
+  });     
+     
+<!-- SCRIPT FOR SIDEPANEL ACCORDION -->
+        
+(function(){
+	var d = document,
+	accordionToggles = d.querySelectorAll('.js-accordionTrigger'),
+	setAria,
+	setAccordionAria,
+	switchAccordion,
+  touchSupported = ('ontouchstart' in window),
+  pointerSupported = ('pointerdown' in window);
+  
+  skipClickDelay = function(e){
+    e.preventDefault();
+    e.target.click();
+  }
+
+		setAriaAttr = function(el, ariaType, newProperty){
+		el.setAttribute(ariaType, newProperty);
+	};
+	setAccordionAria = function(el1, el2, expanded){
+		switch(expanded) {
+      case "true":
+      	setAriaAttr(el1, 'aria-expanded', 'true');
+      	setAriaAttr(el2, 'aria-hidden', 'false');
+      	break;
+      case "false":
+      	setAriaAttr(el1, 'aria-expanded', 'false');
+      	setAriaAttr(el2, 'aria-hidden', 'true');
+      	break;
+      default:
+				break;
+		}
+	};
+    
+switchAccordion = function(e) {
+  console.log("triggered");
+	e.preventDefault();
+	var thisAnswer = e.target.parentNode.nextElementSibling;
+	var thisQuestion = e.target;
+	if(thisAnswer.classList.contains('is-collapsed')) {
+		setAccordionAria(thisQuestion, thisAnswer, 'true');
+	} else {
+		setAccordionAria(thisQuestion, thisAnswer, 'false');
+	}
+  	thisQuestion.classList.toggle('is-collapsed');
+  	thisQuestion.classList.toggle('is-expanded');
+		thisAnswer.classList.toggle('is-collapsed');
+		thisAnswer.classList.toggle('is-expanded');
+ 	
+  	thisAnswer.classList.toggle('animateIn');
+	};
+	for (var i=0,len=accordionToggles.length; i<len; i++) {
+		if(touchSupported) {
+      accordionToggles[i].addEventListener('touchstart', skipClickDelay, false);
+    }
+    if(pointerSupported){
+      accordionToggles[i].addEventListener('pointerdown', skipClickDelay, false);
+    }
+    accordionToggles[i].addEventListener('click', switchAccordion, false);
+  }
+})();    
+     
+</script>     
+
+<script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
+        
+    </body>
 </html>
