@@ -67,45 +67,181 @@ html, body {
 }    
  
 #title-text {
-    border-bottom: 3px solid #b00836;
-    margin-bottom: 5px;
-    padding-bottom: 2px;
-    padding-top: 2px;
+    border-bottom: 5px solid #585858;
+    border-bottom-style:double;
     text-align: center;
-    font-size: 25px; 
+    font-size: 28px; 
     font-family: Garamond;
     color: #b00836; 
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
-
 
 .buttons {
     position: absolute;
-  /* EB: left to a percentage */
-    left: 33%;
-     top: 100px;
+     left: 28%;
+     top: 9.5%;
+    display: inline-block;
+}
+    
+.Yemen {
     border: none;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+        font-size: 15px;
+    background: none;
+    font-weight: bolder;
     margin: 4px 2px;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
     color: black; 
     border: 1.5px solid #b00836;
-    padding: 7px;
+    padding: 5px;
 }
 
-.buttons:hover {
+.Yemen:hover {
     background-color: #b00836;
     color: white;
 }
 
+.Yemen:focus {
+    background-color: #b00836;
+    color: white;
+}    
+
+.Saada {
+    border: none;
+    text-align: center;
+    text-decoration: none;
+        font-size: 15px;
+    background: none;
+    font-weight: bolder;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    color: black; 
+    border: 1.5px solid #b00836;
+    padding: 5px;
+}
+
+.Saada:hover {
+    background-color: #b00836;
+    color: white;
+}
+
+.Saada:focus {
+    background-color: #b00836;
+    color: white;
+}
+    
+.Hajjah {
+    border: none;
+    text-align: center;
+    text-decoration: none;
+        font-size: 15px;
+    background: none;
+    font-weight: bolder;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    color: black; 
+    border: 1.5px solid #b00836;
+    padding: 5px;
+}
+
+.Hajjah:hover {
+    background-color: #b00836;
+    color: white;
+}
+
+.Hajjah:focus {
+    background-color: #b00836;
+    color: white;
+} 
+    
+.Sanaa {
+    border: none;
+    text-align: center;
+    text-decoration: none;
+        font-size: 15px;
+    background: none;
+    font-weight: bolder;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    color: black; 
+    border: 1.5px solid #b00836;
+    padding: 5px;
+}
+
+.Sanaa:hover {
+    background-color: #b00836;
+    color: white;
+}
+
+.Sanaa:focus {
+    background-color: #b00836;
+    color: white;
+}   
+    
+.Taiz {
+    border: none;
+    text-align: center;
+    text-decoration: none;
+        font-size: 15px;
+    background: none;
+    font-weight: bolder;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    color: black; 
+    border: 1.5px solid #b00836;
+    padding: 5px;
+}
+
+.Taiz:hover {
+    background-color: #b00836;
+    color: white;
+}
+
+.Taiz:focus {
+    background-color: #b00836;
+    color: white;
+}
+    
+.Aden {
+    border: none;
+    text-align: center;
+    text-decoration: none;
+        font-size: 15px;
+    background: none;
+    font-weight: bolder;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    color: black; 
+    border: 1.5px solid #b00836;
+    padding: 5px;
+}
+
+.Aden:hover {
+    background-color: #b00836;
+    color: white;
+}
+
+.Aden:focus {
+    background-color: #b00836;
+    color: white;
+}      
+    
 .leaflet-left {
     left: 25%;
-    top: 66px;
+    top: 9.5%;
     position: absolute;
     }
     
@@ -123,7 +259,6 @@ html, body {
         background-color: lightgray;
       }     
     
- <!-- STYLE FOR ACCORDION -->
 
 * {
   box-sizing:border-box;
@@ -134,7 +269,7 @@ body {
   font-family:'Lato';
 }
 .heading-primary {
-  font-size:2em;
+  font-size: 22px;
   padding:2em;
   text-align:center;
 }
@@ -152,7 +287,7 @@ body {
 .accordion dd,
 .accordion__panel {
    background-color:#eee;
-   font-size:1em;
+   font-size: 14px;
    line-height:1.5em; 
 }
 .accordion p {
@@ -166,7 +301,6 @@ body {
 .container {
   max-width:960px;
   margin:0 auto;
-  padding:2em 0 2em 0;
 }
 .accordionTitle,
 .accordion__Heading {
@@ -250,8 +384,6 @@ body {
        }
 }    
 
-<!-- END STYLE FOR ACCORDION -->    
-    
 </style>
     
 </head>
@@ -301,7 +433,7 @@ body {
 <!-- ZOOM BUTTONS -->
     
   <!-- EB restructured this -->
-  <div class="buttons" style = "position: absolute; top: 12.5%; left: 30%;">   
+  <div class="buttons">   
     <button class="Yemen">Yemen</button>
     <button class="Saada">Sa'ada</button>
     <button class="Hajjah">Hajjah</button>
@@ -312,7 +444,7 @@ body {
 
  <!--    POINTS LEGEND -->
 
-  <div class="cartodb-legend" style="position: absolute; width: 150px; left: 83%; top: 12.5%; padding: 10px;">
+  <div class="cartodb-legend" style="position: absolute; width: 175px; left: 88%; top: 57%; padding: 10px;">
       
   <div class="legend-title" style="font-family: Cardo; font-weight: bold; text-align: center; color: black; font-size: 14px; text-transform: none;" >Health Facility Attacks (Mar 2015 - Jun 2016)</div> 
    
@@ -327,71 +459,87 @@ body {
 <a href=""><img style= "vertical-align:middle" img src="https://d30y9cdsu7xlg0.cloudfront.net/png/756341-200.png" width="20" height="20" alt=""></a>
 unidentified attack</div></li>
   </ul>	  
-	 
+
 <!--    POLYGON LEGEND -->
   
- <div class="legend-title" style="font-family: Cardo; font-weight: bold; text-align: center; color: black; font-size: 13px; padding-top: 20px; text-transform: none;" >% of Health Facilities Not (or Partially) Functioning per Governorate</div>
+  <div class="legend-title" style="font-family: Cardo; font-weight: bold; text-align: center; color: black; font-size: 13px; padding-top: 20px; text-transform: none;" >% of Health Facilities Not (or Partially) Functioning per Governorate</div>
             
-<li class="Legend-categoryListItem u-flex u-justifySpace u-alignCenter">
-      <p class="Legend-categoryTitle CDB-Text CDB-Size-small u-upperCase u-ellipsis" style="font-size: 12px; color: grey;" title="75% +">>75%</p>
+<ul>
+  
+<div style="font-size: 11px; margin-bottom: 10px; font-family: Book Antiqua; color:#900C3F; font-weight: bold">
+    <li class="Legend-categoryListItem u-flex u-justifySpace u-alignCenter">
+      <p class="Legend-categoryTitle CDB-Text CDB-Size-small u-upperCase u-ellipsis" title="75% +">>75%</p>
       
-        <span class="Legend-categoryCircle" style="opacity:1; background: #ea052b;"></span></li>
+        <span class="Legend-categoryCircle" style="opacity:1; background: #ea052b;"></span>
+      
+    </li>
   
     <li class="Legend-categoryListItem u-flex u-justifySpace u-alignCenter">
-      <p class="Legend-categoryTitle CDB-Text CDB-Size-small u-upperCase u-ellipsis" style="font-size: 12px; color: grey;" title="50%-75%">50%-75%</p>
+      <p class="Legend-categoryTitle CDB-Text CDB-Size-small u-upperCase u-ellipsis" title="50%-75%">50%-75%</p>
       
-        <span class="Legend-categoryCircle" style="opacity:1; background: #f5666f;"></span></li>
+        <span class="Legend-categoryCircle" style="opacity:1; background: #f5666f;"></span>
+      
+    </li>
   
     <li class="Legend-categoryListItem u-flex u-justifySpace u-alignCenter">
-      <p class="Legend-categoryTitle CDB-Text CDB-Size-small u-upperCase u-ellipsis" style="font-size: 12px; color: grey;" title="25%-49%">25%-49%</p>
+      <p class="Legend-categoryTitle CDB-Text CDB-Size-small u-upperCase u-ellipsis" title="25%-49%">25%-49%</p>
       
-        <span class="Legend-categoryCircle" style="opacity:1; background: #e3a0a1;"></span></li>
+        <span class="Legend-categoryCircle" style="opacity:1; background: #e3a0a1;"></span>
+      
+    </li>
   
     <li class="Legend-categoryListItem u-flex u-justifySpace u-alignCenter">
-      <p class="Legend-categoryTitle CDB-Text CDB-Size-small u-upperCase u-ellipsis" style="font-size: 12px; color: grey;" title="Less than 25%"><25%</p>
+      <p class="Legend-categoryTitle CDB-Text CDB-Size-small u-upperCase u-ellipsis" title="Less than 25%"><25%</p>
       
-        <span class="Legend-categoryCircle" style="opacity:1; background: #eeefe4;"></span></li>
-  
-<font size="1">
-<p style ="padding-top: 10px; color: black;"> Source: <a href="https://reliefweb.int/sites/reliefweb.int/files/resources/YEMEN%202017%20HNO_Final.pdf"> UNOCHA HNO 2017 </a> 	</p>
-      </font>
-    </div>
+        <span class="Legend-categoryCircle" style="opacity:1; background: #eeefe4;"></span>
+        
+    </li>
+    </ul>
 
+    </div>
+    
 <!-- SIDEPANEL -->    
     
-<div id="side-box" class="sidepanel" style="display:block;">
+<div id="side-box" class="sidepanel">
     <div class="wrapper">
         <div id="title-text">
             <h1>YEMEN</h1>
                     </div>
 <!-- ACCORDION -->            
 
-<div class="container">
+<div class="container" style= "padding-top: 25px;">
   <div class="accordion">
     <dl>
       <dt>
-        <a href="#accordion1" aria-expanded="false" aria-controls="accordion1" class="accordion-title accordionTitle js-accordionTrigger">OVERVIEW</a>
+        <a href="#accordion1" aria-expanded="false" aria-controls="accordion1" class="accordion-title accordionTitle js-accordionTrigger" style ="font-size: 22px; padding: 20px;" >CONFLICT OVERVIEW</a>
               </dt>
           <dd class="accordion-content accordionItem is-collapsed" id="accordion1" aria-hidden="true">
-            <p>The ongoing conflict in Yemen, which escalated sharply in March 2015, has led to the near collapse of the country's already fragile health care system. The Office for the Coordination of Humanitarian Affairs (OCHA) reported in June 2016 that 50 percent of hospitals are either not functioning or partially functioning and 25 percent of all health facilities have shut down due to damages, or shortages of staff, medicines, and other resources.</p>
-            <p>This has vastly reduced children's access to health resources and has caused thousands of deaths from treatable diseases.</p>
+            <p>The ongoing conflict in Yemen, which escalated sharply in March 2015, has led to the near collapse of the country's already fragile health care system.</p> 
+            <p>The Office for the Coordination of Humanitarian Affairs (OCHA) reported in June 2016 that 50 percent of hospitals are either not functioning or partially functioning and 25 percent of all health facilities have shut down due to damages, or shortages of staff, medicines, and other resources. In addition, according to the World Health Organization (WHO), more than 100 health facilities have been attacked in the 12 months ending March 2016.</p>
+            <p>This has vastly reduced children's access to health resources and has caused thousands of deaths from treatable diseases. Since March 2015, there has been a dramatic increase in the number of children directly injured by the conflict or suffering from acute malnutrition, acute respiratory infection (ARI), and diarrheal disease. By March 2016, 1.3 million children were at risk of ARI and 2.5 million children were at risk of diarrheal disease—figures that had at least doubled over the preceding 12 months of conflict.</p> 
+            <p>Children’s access to the resources needed to treat diseases, however, have dropped dramatically, partially due to targeted attacks on hospitals by parties to the conflict. According to UNICEF, 10,000 children in Yemen under the age of five may have died in 2015 from preventable diseases as a result in the decline of key health services, such as immunizations against vaccine-preventable diseases and the treatment of diarrhea and pneumonia.</p> 
               </dd>
       <dt>
-        <a href="#accordion2" aria-expanded="false" aria-controls="accordion2" class="accordion-title accordionTitle js-accordionTrigger">
+        <a href="#accordion2" aria-expanded="false" aria-controls="accordion2" class="accordion-title accordionTitle js-accordionTrigger" style ="font-size: 22px; padding: 20px; border-bottom: 2px; border-bottom-color: #FFF;">
                   METHODS</a>
               </dt>
               <dd class="accordion-content accordionItem is-collapsed" id="accordion2" aria-hidden="true">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu interdum diam. Donec interdum porttitor risus non bibendum. Maecenas sollicitudin eros in quam imperdiet placerat. Cras justo purus, rhoncus nec lobortis ut, iaculis vel ipsum. Donec dignissim arcu nec elit faucibus condimentum. Donec facilisis consectetur enim sit amet varius. Pellentesque justo dui, sodales quis luctus a, iaculis eget mauris. </p>
-                <p>Aliquam dapibus, ante quis fringilla feugiat, mauris risus condimentum massa, at elementum libero quam ac ligula. Pellentesque at rhoncus dolor. Duis porttitor nibh ut lobortis aliquam. Nullam eu dolor venenatis mauris placerat tristique eget id dolor. Quisque blandit adipiscing erat vitae dapibus. Nulla aliquam magna nec elementum tincidunt.</p>
+    <p>In constructing a geographical representation of the conflict, Watchlist has compiled data and statistics from reports by a number of different organizations (OCHA, WHO, MSF, other NGOs, media outlets, etc.) in order to provide a spatial overview of individual attacks and disruptions, as well as aggregate statistics at the governorate level. The period covered in this analysis is approximately March 2015 thru April 2016.</p>
+	 <p>Over this period, and as detailed in the map below, Watchlist has identified 52 instances of an attack or a disruption that is supported by official reporting. Details about these incidents, including links to the supporting reports, can be accessed by clicking directly on any of the data points on the map.</p>
+	 <p>Due to gaps in the reporting process caused by the overall difficulty of data collection in Yemen, 
+	 these incidents make up only a fraction of the total number of health facility attacks.</p>
               </dd>
+        
+        <!-- ADD ABOVE LATER: The incidents can also be filtered by attack type by choosing any of the three checkboxes - airstrike, ground attack, or unidentified attack - located above the map at the top left. --> 
+        
               <dt>
-                <a href="#accordion3" aria-expanded="false" aria-controls="accordion3" class="accordion-title accordionTitle js-accordionTrigger">
+                <a href="#accordion3" aria-expanded="false" aria-controls="accordion3" class="accordion-title accordionTitle js-accordionTrigger" style ="font-size: 22px; padding: 20px;">
                   ABOUT
                 </a>
               </dt>
               <dd class="accordion-content accordionItem is-collapsed" id="accordion3" aria-hidden="true">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu interdum diam. Donec interdum porttitor risus non bibendum. Maecenas sollicitudin eros in quam imperdiet placerat. Cras justo purus, rhoncus nec lobortis ut, iaculis vel ipsum. Donec dignissim arcu nec elit faucibus condimentum. Donec facilisis consectetur enim sit amet varius. Pellentesque justo dui, sodales quis luctus a, iaculis eget mauris. </p>
-                <p>Aliquam dapibus, ante quis fringilla feugiat, mauris risus condimentum massa, at elementum libero quam ac ligula. Pellentesque at rhoncus dolor. Duis porttitor nibh ut lobortis aliquam. Nullam eu dolor venenatis mauris placerat tristique eget id dolor. Quisque blandit adipiscing erat vitae dapibus. Nulla aliquam magna nec elementum tincidunt.</p>
+                <p><a href="http://www.watchlist.org" target="_blank" style= "color: blue;">Watchlist on Children and Armed Conflict</a> strives to end strives to end violations against children in armed conflicts and to guarantee their rights. As a global network, the Watchlist builds partnerships among local, national, and international nongovernmental organizations, enhancing mutual capacities and strengths. Working together, we collect and disseminate information on violations against children in conflicts in order to influence key decision-makers to create and implement programs and policies that effectively protect children.</p>
+                <p>This project was developed... (let Watchlist determine language)</p>
               </dd>
             </dl>
           </div>
@@ -415,8 +563,8 @@ var polyLayer;
             zoom: 7,
             search: false,
             cartodb_logo:false,
-            center_lat: 15.947798,
-            center_lon: 46.9255705,
+            center_lat: 15.847798,
+            center_lon: 45.7255705,
             scrollwheel: true,    
             }) 
         
@@ -488,7 +636,7 @@ $('.airstrike-checkbox').change(function () {
             
 <!-- CUSTOM INFOWINDOW -->              
                         
-   var popupTemplate = $('#tooltip_template').html();
+   var popupTemplate =  '<div class="cartodb-popup v2"> <a href="#close" class="cartodb-popup-close-button close">x</a> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">A(n) {{attack_or_disruption}} in the governorate of {{governorate}} on {{attack_date}} at the {{facility_name}} facility <a href="{{report_link}}" target="_blank">as reported by {{report_org}}. </div> </div> <div class="cartodb-popup-tip-container"></div> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">Reported combatant(s): {{combatant_1}} </div> <div>Total killed: {{tot_k}}</div> <div>Total injured: {{tot_i}}</div><div> </div><div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content"> </div><div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">Description: {{description}}</div> </div>';
           
           // EB: this was using "dataLayer" which doesn't exist, I changed it to pointsLayer
                         pointsLayer.infowindow.set('template_type', 'mustache');
@@ -498,8 +646,8 @@ $('.airstrike-checkbox').change(function () {
             
 <!-- INFOWINDOWS FOR POINTS W/ EMBEDDED IMAGE -->
 
- /*<script type="template/html" id="tooltip_template">
-    '<div id="popup">
+/*  <script type="template/html" id="tooltip_template">
+    <div id="popup">
         <div class="cartodb-popup v2"> 
         <a href="#close" class="cartodb-popup-close-button close">x</a>
             <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">A(n) {{attack_or_disruption}} in the governorate of {{governorate}} on {{attack_date}} at the {{facility_name}} facility <a href="{{report_link}}" target="_blank">as reported by {{report_org}}. </div> </div> <div class="cartodb-popup-tip-container"></div> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">Reported combatant(s): {{combatant_1}} </div> <div>Total killed: {{tot_k}}</div> <div>Total injured: {{tot_i}}</div><div> </div><div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content"> </div><div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">Description: {{description}}</div> <div class="cartodb-popup-content-wrapper">
@@ -510,20 +658,16 @@ $('.airstrike-checkbox').change(function () {
             </div>
             <div class="cartodb-popup-tip-container"></div>
           </div> </div>';
-    
-
-            });
 */
 
 <!-- SCRIPT FOR ZOOM BUTTONS -->
   
-  // EB added this for Sana'a, you'll need to set the correct center and zoom
   $('.Sanaa').click(function () {
     leafletMap.setView([15.369445, 44.191007], 12);
   });
     
  $('.Yemen').click(function () {
-    leafletMap.setView([15.552727, 48.516388], 7);
+    leafletMap.setView([15.847798, 45.7255705], 7);
   });    
    
  $('.Hajjah').click(function () {
