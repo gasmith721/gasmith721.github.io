@@ -270,7 +270,8 @@ body {
 
 <!-- CHECKBOX FOR LAYERS -->  
     
-<ul class="checkbox-container">
+
+<!--    <ul class="checkbox-container">
         <li> <label for="points">individual attacks</label>
     <input id="points" type="checkbox" class="points-checkbox" checked="true" />
         </li>
@@ -278,10 +279,10 @@ body {
     <input id="poly" type="checkbox" class="poly-checkbox" checked="true" />
       </li>
     </ul>
-    
+-->    
 <!-- CHECKBOX FOR FILTERING POINTS -->  
     
-   <ul class="checkbox-container1">
+ <!--  <ul class="checkbox-container1">
       <li id="active"><a href="#" id="current"></a>
         <label for="airstrike">airstrike</label>
         <input id="airstrike" type="checkbox" class="airstrike-checkbox" />
@@ -295,12 +296,12 @@ body {
         <input id="indiscriminate" type="checkbox" class="indiscriminate-checkbox" />
       </li>
     </ul>
-            
+-->            
     
 <!-- ZOOM BUTTONS -->
     
   <!-- EB restructured this -->
-  <div class="buttons">   
+  <div class="buttons" style = "position: absolute; top: 12.5%; left: 30%;">   
     <button class="Yemen">Yemen</button>
     <button class="Saada">Sa'ada</button>
     <button class="Hajjah">Hajjah</button>
@@ -311,7 +312,7 @@ body {
 
  <!--    POINTS LEGEND -->
 
-  <div class="cartodb-legend" style="position: absolute; width: 150px; left: 40%; padding: 10px;">
+  <div class="cartodb-legend" style="position: absolute; width: 150px; left: 83%; top: 12.5%; padding: 10px;">
       
   <div class="legend-title" style="font-family: Cardo; font-weight: bold; text-align: center; color: black; font-size: 14px; text-transform: none;" >Health Facility Attacks (Mar 2015 - Jun 2016)</div> 
    
@@ -369,7 +370,7 @@ unidentified attack</div></li>
   <div class="accordion">
     <dl>
       <dt>
-        <a href="#accordion1" aria-expanded="false" aria-controls="accordion1" class="accordion-title accordionTitle js-accordionTrigger">Home</a>
+        <a href="#accordion1" aria-expanded="false" aria-controls="accordion1" class="accordion-title accordionTitle js-accordionTrigger">OVERVIEW</a>
               </dt>
           <dd class="accordion-content accordionItem is-collapsed" id="accordion1" aria-hidden="true">
             <p>The ongoing conflict in Yemen, which escalated sharply in March 2015, has led to the near collapse of the country's already fragile health care system. The Office for the Coordination of Humanitarian Affairs (OCHA) reported in June 2016 that 50 percent of hospitals are either not functioning or partially functioning and 25 percent of all health facilities have shut down due to damages, or shortages of staff, medicines, and other resources.</p>
@@ -377,7 +378,7 @@ unidentified attack</div></li>
               </dd>
       <dt>
         <a href="#accordion2" aria-expanded="false" aria-controls="accordion2" class="accordion-title accordionTitle js-accordionTrigger">
-                  Second Accordion heading</a>
+                  METHODS</a>
               </dt>
               <dd class="accordion-content accordionItem is-collapsed" id="accordion2" aria-hidden="true">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu interdum diam. Donec interdum porttitor risus non bibendum. Maecenas sollicitudin eros in quam imperdiet placerat. Cras justo purus, rhoncus nec lobortis ut, iaculis vel ipsum. Donec dignissim arcu nec elit faucibus condimentum. Donec facilisis consectetur enim sit amet varius. Pellentesque justo dui, sodales quis luctus a, iaculis eget mauris. </p>
@@ -385,7 +386,7 @@ unidentified attack</div></li>
               </dd>
               <dt>
                 <a href="#accordion3" aria-expanded="false" aria-controls="accordion3" class="accordion-title accordionTitle js-accordionTrigger">
-                  Third Accordion heading
+                  ABOUT
                 </a>
               </dt>
               <dd class="accordion-content accordionItem is-collapsed" id="accordion3" aria-hidden="true">
@@ -416,7 +417,6 @@ var polyLayer;
             cartodb_logo:false,
             center_lat: 15.947798,
             center_lon: 46.9255705,
-            layer_selector: true,
             scrollwheel: true,    
             }) 
         
