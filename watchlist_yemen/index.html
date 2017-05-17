@@ -130,7 +130,7 @@ html, body {
     color: white;
 }    
 
-.Saada {
+.Sadah {
     border: none;
     text-align: center;
     text-decoration: none;
@@ -146,12 +146,12 @@ html, body {
     padding: 5px;
 }
 
-.Saada:hover {
+.Sadah:hover {
     background-color: #b00836;
     color: white;
 }
 
-.Saada:focus {
+.Sadah:focus {
     background-color: #b00836;
     color: white;
 }
@@ -180,7 +180,33 @@ html, body {
 .Hajjah:focus {
     background-color: #b00836;
     color: white;
-} 
+}
+
+.Harad {
+    border: none;
+    text-align: center;
+    text-decoration: none;
+        font-size: 15px;
+    background: none;
+    font-weight: bolder;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    color: black; 
+    border: 2px solid #b00836;
+    padding: 5px;
+}
+
+.Harad:hover {
+    background-color: #b00836;
+    color: white;
+}
+
+.Harad:focus {
+    background-color: #b00836;
+    color: white;
+}     
     
 .Sanaa {
     border: none;
@@ -292,7 +318,7 @@ body {
    line-height:1.5em; 
 }
 .accordion p {
-  padding:1em 2em 1em 2em;
+  padding: 0em 2em 0em 0em;
 }
 
 .accordion {
@@ -436,8 +462,9 @@ body {
   <!-- EB restructured this -->
   <div class="buttons">   
     <button class="Yemen">Yemen</button>
-    <button class="Saada">Sa'ada</button>
+    <button class="Sadah">Sa'dah</button>
     <button class="Hajjah">Hajjah</button>
+    <button class="Harad">Harad</button>
     <button class="Sanaa">Sana'a</button>
     <button class="Taiz">Taiz</button>
     <button class="Aden">Aden</button>
@@ -493,17 +520,18 @@ unidentified attack</div></li>
                     </div>
 <!-- ACCORDION -->            
 
-<div class="container" style= "padding-top: 25px;">
+<div class="container" style= "padding-top: 15px;">
   <div class="accordion">
     <dl>
       <dt>
-        <a href="#accordion1" aria-expanded="false" aria-controls="accordion1" class="accordion-title accordionTitle js-accordionTrigger" style ="font-size: 22px; padding: 20px;" >CONFLICT OVERVIEW</a>
+        <a href="#accordion1" aria-expanded="false" aria-controls="accordion1" class="accordion-title accordionTitle js-accordionTrigger" style ="font-size: 22px; padding: 20px; " >CONFLICT OVERVIEW</a>
               </dt>
           <dd class="accordion-content accordionItem is-collapsed" id="accordion1" aria-hidden="true" style="padding: 5px;">
             <p>The ongoing conflict in Yemen, which escalated sharply in March 2015, has led to the near collapse of the country's already fragile health care system.</p> 
             <p>The Office for the Coordination of Humanitarian Affairs (OCHA) reported in June 2016 that 50 percent of hospitals are either not functioning or partially functioning and 25 percent of all health facilities have shut down due to damages, or shortages of staff, medicines, and other resources. In addition, according to the World Health Organization (WHO), more than 100 health facilities have been attacked in the 12 months ending March 2016.</p>
-            <p>This has vastly reduced children's access to health resources and has caused thousands of deaths from treatable diseases. Since March 2015, there has been a dramatic increase in the number of children directly injured by the conflict or suffering from acute malnutrition, acute respiratory infection (ARI), and diarrheal disease. By March 2016, 1.3 million children were at risk of ARI and 2.5 million children were at risk of diarrheal disease—figures that had at least doubled over the preceding 12 months of conflict.</p> 
-            <p>Children’s access to the resources needed to treat diseases, however, have dropped dramatically, partially due to targeted attacks on hospitals by parties to the conflict. According to UNICEF, 10,000 children in Yemen under the age of five may have died in 2015 from preventable diseases as a result in the decline of key health services, such as immunizations against vaccine-preventable diseases and the treatment of diarrhea and pneumonia.</p> 
+            <p>This has vastly reduced children's access to health resources and has caused thousands of deaths from treatable diseases. </p>
+            <p>Since March 2015, there has been a dramatic increase in the number of children directly injured by the conflict or suffering from acute malnutrition, acute respiratory infection (ARI), and diarrheal disease. By March 2016, 1.3 million children were at risk of ARI and 2.5 million children were at risk of diarrheal disease - figures that had at least doubled over the preceding 12 months of conflict.</p> 
+            <p>According to UNICEF, 10,000 children in Yemen under the age of five may have died in 2015 from preventable diseases as a result in the decline of key health services, such as immunizations against vaccine-preventable diseases and the treatment of diarrhea and pneumonia.</p> 
               </dd>
       <dt>
         <a href="#accordion2" aria-expanded="false" aria-controls="accordion2" class="accordion-title accordionTitle js-accordionTrigger" style ="font-size: 22px; padding: 20px; border-bottom: 2px; border-bottom-color: #FFF;">
@@ -551,7 +579,8 @@ var polyLayer;
             cartodb_logo:false,
             center_lat: 15.847798,
             center_lon: 45.7255705,
-            scrollwheel: true,    
+            scrollwheel: true,
+            layer_selector: true,
             }) 
         
             .done(function (vis, layers) {
@@ -657,19 +686,23 @@ $('.airstrike-checkbox').change(function () {
   });    
    
  $('.Hajjah').click(function () {
-    leafletMap.setView([15.703040, 43.603930], 12);
-  });  
+    leafletMap.setView([15.703040, 43.603930], 14);
+  });
     
- $('.Saada').click(function () {
+$('.Harad').click(function () {
+    leafletMap.setView([16.4062392, 43.0404208], 14);
+  });     
+    
+ $('.Sadah').click(function () {
     leafletMap.setView([16.950941, 43.747774], 12);
   }); 
     
  $('.Taiz').click(function () {
-    leafletMap.setView([13.577589, 44.017799], 12);
+    leafletMap.setView([13.577589, 43.957799], 12);
   }); 
     
  $('.Aden').click(function () {
-    leafletMap.setView([12.810655, 44.9451118], 12);
+    leafletMap.setView([12.810655, 45.0151118], 13);
   });     
      
 <!-- SCRIPT FOR SIDEPANEL ACCORDION -->
