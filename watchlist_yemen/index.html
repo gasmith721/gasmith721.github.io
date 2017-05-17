@@ -37,15 +37,16 @@ html, body {
 }
 
 #header {
-    position: fixed;
+    position: absolute;
     display: flex;
     width: 125%;
     z-index:5;
     overflow: hidden;
-    height: 70px;
+    height: 63px;
     background-color: rgba(0,0,0,.33);
     justify-content: center;
     vertical-align: middle;
+    align-content: center;
 }
     
 .sidepanel {
@@ -75,11 +76,31 @@ html, body {
     color: #b00836; 
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
+    
+.leaflet-left {
+    left: 25%;
+    top: 9.3%;
+    position: absolute;
+    }
+    
+.checkbox-container {
+        position: absolute;
+        top: 450px;
+        right: 55px;
+        background-color: lightgray;
+      }
+    
+.checkbox-container1 {
+        position: absolute;
+        top: 200px;
+        right: 70px;
+        background-color: lightgray;
+      }       
 
 .buttons {
     position: absolute;
-     left: 28%;
-     top: 9.5%;
+     left: 29%;
+     top: 10%;
     display: inline-block;
 }
     
@@ -95,7 +116,7 @@ html, body {
     transition-duration: 0.4s;
     cursor: pointer;
     color: black; 
-    border: 1.5px solid #b00836;
+    border: 2px solid #b00836;
     padding: 5px;
 }
 
@@ -121,7 +142,7 @@ html, body {
     transition-duration: 0.4s;
     cursor: pointer;
     color: black; 
-    border: 1.5px solid #b00836;
+    border: 2px solid #b00836;
     padding: 5px;
 }
 
@@ -147,7 +168,7 @@ html, body {
     transition-duration: 0.4s;
     cursor: pointer;
     color: black; 
-    border: 1.5px solid #b00836;
+    border: 2px solid #b00836;
     padding: 5px;
 }
 
@@ -173,7 +194,7 @@ html, body {
     transition-duration: 0.4s;
     cursor: pointer;
     color: black; 
-    border: 1.5px solid #b00836;
+    border: 2px solid #b00836;
     padding: 5px;
 }
 
@@ -199,7 +220,7 @@ html, body {
     transition-duration: 0.4s;
     cursor: pointer;
     color: black; 
-    border: 1.5px solid #b00836;
+    border: 2px solid #b00836;
     padding: 5px;
 }
 
@@ -225,7 +246,7 @@ html, body {
     transition-duration: 0.4s;
     cursor: pointer;
     color: black; 
-    border: 1.5px solid #b00836;
+    border: 2px solid #b00836;
     padding: 5px;
 }
 
@@ -238,26 +259,6 @@ html, body {
     background-color: #b00836;
     color: white;
 }      
-    
-.leaflet-left {
-    left: 25%;
-    top: 9.5%;
-    position: absolute;
-    }
-    
-.checkbox-container {
-        position: absolute;
-        top: 450px;
-        right: 55px;
-        background-color: lightgray;
-      }
-    
-.checkbox-container1 {
-        position: absolute;
-        top: 200px;
-        right: 70px;
-        background-color: lightgray;
-      }     
     
 
 * {
@@ -393,7 +394,7 @@ body {
 <!-- HEADER -->    
     
 <div id="header">
-    <a href="http://watchlist.org/" target="_blank"> <img src="http://watchlist.org/wp-content/uploads/header-logo.png" width="340" height="70"> </a>
+    <a href="http://watchlist.org/" target="_blank"> <img src="http://watchlist.org/wp-content/uploads/header-logo.png" width="300" height="62"> </a>
     </div>     
     
 <!-- MAP -->    
@@ -444,7 +445,7 @@ body {
 
  <!--    POINTS LEGEND -->
 
-  <div class="cartodb-legend" style="position: absolute; width: 175px; left: 88%; top: 57%; padding: 10px;">
+  <div class="cartodb-legend" style="position: sticky; width: 175px; left: 85%; bottom: 25%; padding: 10px;">
       
   <div class="legend-title" style="font-family: Cardo; font-weight: bold; text-align: center; color: black; font-size: 14px; text-transform: none;" >Health Facility Attacks (Mar 2015 - Jun 2016)</div> 
    
@@ -458,45 +459,30 @@ body {
     <li><div class="bullet" style="font-size: 13px; font-weight: bold; text-transform: lowercase; font-family: Cardo; color:#b00836; font-weight: bold">
 <a href=""><img style= "vertical-align:middle" img src="https://d30y9cdsu7xlg0.cloudfront.net/png/756341-200.png" width="20" height="20" alt=""></a>
 unidentified attack</div></li>
-  </ul>	  
+  </ul>
+    </div>      
 
 <!--    POLYGON LEGEND -->
   
-  <div class="legend-title" style="font-family: Cardo; font-weight: bold; text-align: center; color: black; font-size: 13px; padding-top: 20px; text-transform: none;" >% of Health Facilities Not (or Partially) Functioning per Governorate</div>
+<div class="cartodb-legend category" style="left:85%; width: 175px; position: sticky;">       
+      
+  <div class="legend-title" style="font-family: Cardo; font-weight: bold; text-align: center; color: black; font-size: 14px; text-transform: none;" >% of Health Facilities at Diminished Capacity</div>
             
-<ul>
+    <ul class ="legend-list">
   
-<div style="font-size: 11px; margin-bottom: 10px; font-family: Book Antiqua; color:#900C3F; font-weight: bold">
-    <li class="Legend-categoryListItem u-flex u-justifySpace u-alignCenter">
-      <p class="Legend-categoryTitle CDB-Text CDB-Size-small u-upperCase u-ellipsis" title="75% +">>75%</p>
+        <li style="font-size:13px;font-family:Cardo;font-weight:bold;"><div class="bullet" style="background-color:#ea052b;"></div>>75%</li>
       
-        <span class="Legend-categoryCircle" style="opacity:1; background: #ea052b;"></span>
-      
-    </li>
-  
-    <li class="Legend-categoryListItem u-flex u-justifySpace u-alignCenter">
-      <p class="Legend-categoryTitle CDB-Text CDB-Size-small u-upperCase u-ellipsis" title="50%-75%">50%-75%</p>
-      
-        <span class="Legend-categoryCircle" style="opacity:1; background: #f5666f;"></span>
-      
-    </li>
-  
-    <li class="Legend-categoryListItem u-flex u-justifySpace u-alignCenter">
-      <p class="Legend-categoryTitle CDB-Text CDB-Size-small u-upperCase u-ellipsis" title="25%-49%">25%-49%</p>
-      
-        <span class="Legend-categoryCircle" style="opacity:1; background: #e3a0a1;"></span>
-      
-    </li>
-  
-    <li class="Legend-categoryListItem u-flex u-justifySpace u-alignCenter">
-      <p class="Legend-categoryTitle CDB-Text CDB-Size-small u-upperCase u-ellipsis" title="Less than 25%"><25%</p>
-      
-        <span class="Legend-categoryCircle" style="opacity:1; background: #eeefe4;"></span>
+        <li style="font-size:13px;font-family:Cardo;font-weight:bold;"><div class="bullet" style="background-color:#f5666f;"></div>50% - 75%</li>
         
-    </li>
-    </ul>
-
-    </div>
+        <li style="font-size:13px;font-family:Cardo;font-weight:bold;"><div class="bullet" style="background-color:#e3a0a1"></div>25% - 49%</li>
+        
+        <li style="text-transform: lowercase; vertical-align: center; padding-bottom: 2px;font-size:13px;font-family:Cardo;"><div class="bullet" style="background-color:#eeefe4; padding-top: 2px; align:center;" >
+            </div>     less than 25%</li>
+        
+                </ul>
+                    </div>
+                    
+    
     
 <!-- SIDEPANEL -->    
     
@@ -513,7 +499,7 @@ unidentified attack</div></li>
       <dt>
         <a href="#accordion1" aria-expanded="false" aria-controls="accordion1" class="accordion-title accordionTitle js-accordionTrigger" style ="font-size: 22px; padding: 20px;" >CONFLICT OVERVIEW</a>
               </dt>
-          <dd class="accordion-content accordionItem is-collapsed" id="accordion1" aria-hidden="true">
+          <dd class="accordion-content accordionItem is-collapsed" id="accordion1" aria-hidden="true" style="padding: 5px;">
             <p>The ongoing conflict in Yemen, which escalated sharply in March 2015, has led to the near collapse of the country's already fragile health care system.</p> 
             <p>The Office for the Coordination of Humanitarian Affairs (OCHA) reported in June 2016 that 50 percent of hospitals are either not functioning or partially functioning and 25 percent of all health facilities have shut down due to damages, or shortages of staff, medicines, and other resources. In addition, according to the World Health Organization (WHO), more than 100 health facilities have been attacked in the 12 months ending March 2016.</p>
             <p>This has vastly reduced children's access to health resources and has caused thousands of deaths from treatable diseases. Since March 2015, there has been a dramatic increase in the number of children directly injured by the conflict or suffering from acute malnutrition, acute respiratory infection (ARI), and diarrheal disease. By March 2016, 1.3 million children were at risk of ARI and 2.5 million children were at risk of diarrheal disease—figures that had at least doubled over the preceding 12 months of conflict.</p> 
@@ -523,7 +509,7 @@ unidentified attack</div></li>
         <a href="#accordion2" aria-expanded="false" aria-controls="accordion2" class="accordion-title accordionTitle js-accordionTrigger" style ="font-size: 22px; padding: 20px; border-bottom: 2px; border-bottom-color: #FFF;">
                   METHODS</a>
               </dt>
-              <dd class="accordion-content accordionItem is-collapsed" id="accordion2" aria-hidden="true">
+              <dd class="accordion-content accordionItem is-collapsed" id="accordion2" aria-hidden="true" style="padding: 5px;">
     <p>In constructing a geographical representation of the conflict, Watchlist has compiled data and statistics from reports by a number of different organizations (OCHA, WHO, MSF, other NGOs, media outlets, etc.) in order to provide a spatial overview of individual attacks and disruptions, as well as aggregate statistics at the governorate level. The period covered in this analysis is approximately March 2015 thru April 2016.</p>
 	 <p>Over this period, and as detailed in the map below, Watchlist has identified 52 instances of an attack or a disruption that is supported by official reporting. Details about these incidents, including links to the supporting reports, can be accessed by clicking directly on any of the data points on the map.</p>
 	 <p>Due to gaps in the reporting process caused by the overall difficulty of data collection in Yemen, 
@@ -537,7 +523,7 @@ unidentified attack</div></li>
                   ABOUT
                 </a>
               </dt>
-              <dd class="accordion-content accordionItem is-collapsed" id="accordion3" aria-hidden="true">
+              <dd class="accordion-content accordionItem is-collapsed" id="accordion3" aria-hidden="true" >
                 <p><a href="http://www.watchlist.org" target="_blank" style= "color: blue;">Watchlist on Children and Armed Conflict</a> strives to end strives to end violations against children in armed conflicts and to guarantee their rights. As a global network, the Watchlist builds partnerships among local, national, and international nongovernmental organizations, enhancing mutual capacities and strengths. Working together, we collect and disseminate information on violations against children in conflicts in order to influence key decision-makers to create and implement programs and policies that effectively protect children.</p>
                 <p>This project was developed... (let Watchlist determine language)</p>
               </dd>
@@ -636,7 +622,7 @@ $('.airstrike-checkbox').change(function () {
             
 <!-- CUSTOM INFOWINDOW -->              
                         
-   var popupTemplate =  '<div class="cartodb-popup v2"> <a href="#close" class="cartodb-popup-close-button close">x</a> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">A(n) {{attack_or_disruption}} in the governorate of {{governorate}} on {{attack_date}} at the {{facility_name}} facility <a href="{{report_link}}" target="_blank">as reported by {{report_org}}. </div> </div> <div class="cartodb-popup-tip-container"></div> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">Reported combatant(s): {{combatant_1}} </div> <div>Total killed: {{tot_k}}</div> <div>Total injured: {{tot_i}}</div><div> </div><div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content"> </div><div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">Description: {{description}}</div> </div>';
+   var popupTemplate =  '<div class="cartodb-popup v2"> <a href="#close" class="cartodb-popup-close-button close">x</a> <div class="cartodb-popup-content-wrapper"> <div style="padding-bottom: 10px;" class="cartodb-popup-content">A(n) {{attack_or_disruption}} in the governorate of {{governorate}} on {{attack_date}} at the {{facility_name}} facility <a href="{{report_link}}" target="_blank">as reported by {{report_org}}.</div> </div> <div class="cartodb-popup-content-wrapper"><div class="cartodb-popup-content">Reported combatant(s): {{combatant_1}} </div> <div>Total killed: {{tot_k}}</div> <div>Total injured: {{tot_i}}</div></div> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">Level of Precision: {{precision_1}} </div> </div> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">Description: {{description}}</div> </div>';
           
           // EB: this was using "dataLayer" which doesn't exist, I changed it to pointsLayer
                         pointsLayer.infowindow.set('template_type', 'mustache');
