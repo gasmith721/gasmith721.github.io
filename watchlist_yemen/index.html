@@ -116,7 +116,6 @@ html, body {
    box-shadow:         inset 0 0 17px #000000;
 }
 
-/*Checkboxes styles*/
 input[type="checkbox"] { display: none; }
 
 input[type="checkbox"] + label {
@@ -502,7 +501,12 @@ body {
    width: 80%;
   margin: 0 auto;
     font-family: 'Lato';
-    }    
+    }   
+    
+.sidebar-inner {
+        padding: 15px;
+    
+      }    
 
 </style>
     
@@ -521,7 +525,7 @@ body {
 <!-- CHECKBOX FOR LAYERS -->  
     
   <div class="boxes1">
-       <div class="legend-title" style="font-family: Cardo; font-weight: bold; text-align: center; color: black; font-size: 14px; text-transform: none;padding-bottom:15px;" >Map Layer Selector:</div> 
+       <div class="legend-title" style="font-family: Lato; font-weight: 900; text-align: center; color: black; font-size: 15px; text-transform: none;padding-bottom:15px;font-weight: 800;" >Map Layer Selector</div> 
         
       <input type="checkbox" id="points" class="points-checkbox" checked="true">
   <label for="points">individual attacks</label>
@@ -535,7 +539,7 @@ body {
 <!-- CHECKBOX FOR FILTERING POINTS -->  
    
 <div class="boxes">
-     <div class="legend-title" style="font-family: Cardo; font-weight: bold; text-align: center; color: black; font-size: 14px; text-transform: none;padding-bottom:15px;" >Filter Attacks by Type:</div> 
+     <div class="legend-title" style="font-family: Lato; font-weight: 900; text-align: center; color: black; font-size: 15px; text-transform: none;padding-bottom:15px;" >Filter Attacks by Type</div> 
   <input type="checkbox" id="airstrike" class="airstrike-checkbox">
   <label for="airstrike">airstrike</label>
 
@@ -563,7 +567,7 @@ body {
 
   <div class="cartodb-legend" style="position: absolute; width: 175px; right: 0.5%; bottom: 2%; padding: 10px;">
       
-  <div class="legend-title" style="font-family: Cardo; font-weight: bold; text-align: center; color: black; font-size: 14px; text-transform: none;" >Health Facility Attacks (Mar 2015 - Jun 2016)</div> 
+  <div class="legend-title" style="font-family: Lato; font-weight: 900; text-align: center; color: black; font-size: 15px; text-transform: none;" >Health Facility Attacks</div> 
    
 <ul class="legend-list">
       <li><div class="image" style="font-size: 13px; font-weight: bold; text-transform: lowercase; margin-bottom: 10px; font-family: Cardo; color:#b00836;">
@@ -582,18 +586,18 @@ unidentified attack</div></li>
   
 <span class="cartodb-legend category">       
       
-    <div class="legend-title" style="font-family: Cardo; font-weight: bold; text-align: center; color: black; font-size: 14px; text-transform: none; padding-top: 15px;" >% of Health Facilities at Diminished Capacity</div>
+    <div class="legend-title" style="font-family: Lato; font-weight: 900; text-align: center; color: black; font-size: 14px; text-transform: none; padding-top: 15px;" >% of Health Facilities at Diminished Capacity</div>
             
-    <ul class ="legend-list">
+    <ul class ="legend-list" style="color:black;">
   
-        <li style="font-size:13px;font-family:Cardo;font-weight:bold;"><div class="bullet" style="background-color:#ea052b;"></div>>75%</li>
+        <div class="bullet" style="background-color:#ea052b;"></div><li style="font-size:14px;font-family:Cardo;font-weight:900;color:black;">>75%</li>
       
-        <li style="font-size:13px;font-family:Cardo;font-weight:bold;"><div class="bullet" style="background-color:#f5666f;"></div>50% - 75%</li>
+        <div class="bullet" style="background-color:#f5666f;"></div><li style="font-size:14px;font-family:Cardo;font-weight:bold;color:black;">50% - 75%</li>
         
-        <li style="font-size:13px;font-family:Cardo;font-weight:bold;"><div class="bullet" style="background-color:#e3a0a1"></div>25% - 49%</li>
+        <div class="bullet" style="background-color:#e3a0a1"></div><li style="font-size:14px;font-family:Cardo;font-weight:bold;color:black;">25% - 49%</li>
         
-        <li style="text-transform: lowercase; vertical-align: center; padding-bottom: 2px;font-size:13px;font-family:Cardo;"><div class="bullet" style="background-color:#eeefe4; padding-top: 2px; align:center;" >
-            </div>     less than 25%</li>
+        <div class="bullet" style="background-color:#eeefe4; padding-top: 2px; align:center;" >
+            </div><li style="text-transform: lowercase; vertical-align: center; padding-bottom: 2px;font-size:14px;font-family:Cardo;color:black;">less than 25%</li>
         
                 </ul>
                     </span>
@@ -607,6 +611,9 @@ unidentified attack</div></li>
         <div id="title-text">
             <h1>YEMEN</h1>
                     </div>
+            <div id="sidebar">
+                
+        
 <!-- ACCORDION -->            
 
 <div class="container" style= "padding-top: 15px;">
@@ -649,7 +656,17 @@ unidentified attack</div></li>
         </div>
     </div>
     
-
+<!-- MEDIA IN SIDEBAR -->
+                
+      <div class="sidebar-inner">
+        <div>
+          <span class='data-name'></span>
+        </div>
+        <div>
+          <img class='data-image' />
+        </div>
+      </div>
+    </div>
 
 
         
@@ -738,11 +755,27 @@ $('.airstrike-checkbox').change(function () {
         console.log(sql);
         pointsLayer.setSQL(sql);
       }           
-           
+    
+            
+<!-- MEDIA IN SIDEBAR SCRIPT-->
+    
+ // Set which columns you want from the dataset when a feature is clicked. This is a comma-separated list.
+            pointsLayer.set({
+              interactivity: 'media_1,media_2'
+            });
+
+            // When a feature is clicked, put the data in the sidebar
+            pointsLayer.on('featureClick', function(e, latlng, pos, data) {
+              // You can handle any text like this:
+              $('.data-name').text(data.name);
+              
+              // If you have attributes (like an <img> src) do so this way:
+              $('.data-image').attr('src', data.image_url);
+            });    
             
 <!-- CUSTOM INFOWINDOW FOR POINTS LAYER -->              
                         
-   var popupTemplate =  '<div class="cartodb-popup v2"> <a href="#close" class="cartodb-popup-close-button close">x</a> <div class="cartodb-popup-content-wrapper"> <div style="padding-bottom: 10px;" class="cartodb-popup-content">A(n) {{attack_or_disruption}} in the governorate of {{governorate}} on {{attack_date}} at the {{facility_name}} facility <a href="{{report_link}}" target="_blank">as reported by {{report_org}}.</div> </div> <div class="cartodb-popup-content-wrapper"><div class="cartodb-popup-content">Reported combatant(s): {{combatant_1}} </div> <div>Total killed: {{tot_k}}</div> <div>Total injured: {{tot_i}}</div></div> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">Level of Precision: {{precision_1}} </div> </div> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">Description: {{description}}</div>  <div class="cartodb-popup-content-wrapper"><div class="cartodb-popup-content">Media:</div><img style="width: 100%;" src="{{media_1}}" /> </div></div>';
+   var popupTemplate =  '<div class="cartodb-popup v2"> <a href="#close" class="cartodb-popup-close-button close">x</a> <div class="cartodb-popup-content-wrapper"> <div style="padding-bottom: 10px;" class="cartodb-popup-content">A(n) {{attack_or_disruption}} in the governorate of {{governorate}} on {{attack_date}} at the {{facility_name}} facility <a href="{{report_link}}" target="_blank">as reported by {{report_org}}.</div> </div> <div class="cartodb-popup-content-wrapper"><div class="cartodb-popup-content">Reported combatant(s): {{combatant_1}} </div> <div>Total killed: {{tot_k}}</div> <div>Total injured: {{tot_i}}</div></div> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">Level of Precision: {{precision_1}} </div> </div> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">Description: {{description}}</div>  <div class="cartodb-popup-content-wrapper"><div class="cartodb-popup-content">Media:</div><img style="width: 100%;height:150px;" src="{{media_1}}"/><img style="width: 100%px;height:150px;" src="{{media_2}}" </div></div>';
                
           pointsLayer.setInteractivity('cartodb_id');
             pointsLayer.infowindow.set('template_type', 'mustache');
@@ -872,5 +905,6 @@ switchAccordion = function(e) {
 
 <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
 </html>
+
 
 
