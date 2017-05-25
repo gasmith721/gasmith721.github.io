@@ -21,6 +21,12 @@
 <link rel="stylesheet" type="text/css"
       href="https://fonts.googleapis.com/css?family=Garamond">
 
+<link rel="stylesheet" type="text/css"
+      href="https://fonts.googleapis.com/css?family=Lato">
+    
+<link rel="stylesheet" type="text/css"
+      href="https://fonts.googleapis.com/css?family=Roboto">    
+    
     
 <style>
 
@@ -38,8 +44,9 @@ html, body {
 
 #header {
     position: absolute;
+    right: 0;
     display: flex;
-    width: 125%;
+    width: 75%;
     z-index:5;
     overflow: hidden;
     height: 63px;
@@ -72,9 +79,8 @@ html, body {
     border-bottom-style:double;
     text-align: center;
     font-size: 28px; 
-    font-family: Garamond;
+    font-family: Lato;
     color: #b00836; 
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
     
 .leaflet-left {
@@ -82,38 +88,24 @@ html, body {
     top: 9.3%;
     position: absolute;
     }
-
-/* STYLING FOR LAYER FILTER */
-    
-.boxes1 {
-  margin: auto;
-  padding: 12px;
-    position: absolute;
-        top: 26%;
-        right: 0.54%;
-    border-radius: 10px;
-    width: 175px;
-    border:1px solid #021a40; background-color: #eff1f4;
-   -moz-box-shadow:    inset 0 0 17px #000000;
-   -webkit-box-shadow: inset 0 0 17px #000000;
-   box-shadow:         inset 0 0 17px #000000;
-}
-
-    
-/* STYLING FOR POINTS CHECKBOX FILTERS */
+ 
+/* CHECKBOX FILTERS */
 
 .boxes {
   margin: auto;
-  padding: 12px;
+  padding-top: 12px;
+  padding-left: 12px;
+  padding-right: 12px;    
     position: absolute;
-        top: 41%;
-        right: 0.54%;
-    border-radius: 10px;
-    width: 175px;
-    border:1px solid #021a40; background-color: #eff1f4;
-   -moz-box-shadow:    inset 0 0 17px #000000;
-   -webkit-box-shadow: inset 0 0 17px #000000;
-   box-shadow:         inset 0 0 17px #000000;
+        bottom: 2.5%;
+        right: .75%;
+    border-radius: 6px;
+    width: 185px;
+    border:1px solid #021a40; 
+    background-color: #fff;
+   -moz-box-shadow:    inset 0 0 2.5px #000000;
+   -webkit-box-shadow: inset 0 0 2.5px #000000;
+   box-shadow:         inset 0 0 2.5px #000000;
 }
 
 input[type="checkbox"] { display: none; }
@@ -160,7 +152,7 @@ input[type="checkbox"]:checked + label:before {
   transform: rotate(45deg);
 }     
     
-/* ZOOM BUTTON STYLING */
+/* ZOOM BUTTONS */
     
 .buttons {
     position: absolute;
@@ -377,7 +369,7 @@ body {
   text-align:center;
 }
 .accordion dl,
-.accordion-list {
+    .accordion-list {
    border:1px solid #ddd;
    &:after {
        content: "";
@@ -497,17 +489,99 @@ body {
        }
 }   
 
+/* 'ZOOM TO' DIV */    
 #inner{
    width: 80%;
   margin: 0 auto;
-    font-family: 'Lato';
-    }   
+    font-family: Lato;
+  text-align: center;
+    font-size: 22px; 
+    text-transform: uppercase; 
+    font-weight:900; 
+    color:#b00836;
+    -webkit-text-stroke: .25px black;
+       }   
     
 .sidebar-inner {
         padding: 15px;
     
       }    
 
+.bullet1 {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+    
+.legend-list {
+    list-style-type: none;
+    text-align: left;
+    margin-left: -40px;
+    }
+    
+/* INFOWINDOWS */
+    
+.cartodb-popup.v2 {
+    width:400px;
+    max-height:425px;
+     padding: 10px; 
+    border-radius: 8px;
+    color: white;
+    font-family: Lato;
+    font-size: 13px;
+    }
+    
+.cartodb-popup-v3 {
+    width:300px;
+    max-height:450px;
+     padding: 10px; 
+    background: #222222;
+    overflow-y:scroll;
+    border-radius: 8px;
+    color: white;
+    font-family: Lato;
+    font-size: 13px;
+    }    
+
+  div.cartodb-popup.v2 div.cartodb-popup-content-wrapper {
+    padding-bottom: 14px;
+    background-color: #222222;
+  }
+  
+  div.cartodb-popup .jspContainer:after {
+    background: none;
+  }
+  
+  div.cartodb-popup .jspContainer:before {
+    background: none;
+  }
+    
+.cartodb-popup-v3 {
+    width:250px;
+    max-height:400px;
+     padding: 10px; 
+    background: #2E3C43;
+    overflow-y:scroll;
+    border-radius: 10px;
+    color: white;
+    }    
+ 
+ div.cartodb-popup.v2 h3 {
+    color: grey;
+    text-transform:uppercase;
+    font-size: 13px;
+    padding-top: 15px;
+     font-family: Lato;
+    }   
+    
+ div.cartodb-popup.v2 h4 {
+    color: grey;
+    text-transform:uppercase;
+    font-size: 13px;
+      font-family: Lato;
+    }     
+    
 </style>
     
 </head>
@@ -521,11 +595,25 @@ body {
 <!-- MAP -->    
     
 <div id="map"></div>
+    
+<!-- ZOOM TO BUTTONS -->
+    
+  <div class="buttons">
+    <div id="inner">Zoom to:</div>  
+        <button class="Yemen">Yemen</button>
+        <button class="Sadah">Sa'dah</button>
+        <button class="Hajjah">Hajjah</button>
+        <button class="Harad">Harad</button>
+        <button class="Sanaa">Sana'a</button>
+        <button class="Taiz">Taiz</button>
+        <button class="Aden">Aden</button>
+  </div>
+    
 
 <!-- CHECKBOX FOR LAYERS -->  
     
-  <div class="boxes1">
-       <div class="legend-title" style="font-family: Lato; font-weight: 900; text-align: center; color: black; font-size: 15px; text-transform: none;padding-bottom:15px;font-weight: 800;" >Map Layer Selector</div> 
+  <div class="boxes" style="padding-bottom:none;">
+       <div class="legend-title" style="font-family: Lato; font-weight: 900; text-align: center; color: black; font-size: 15px; text-transform: none;padding-bottom:10px;font-weight: 800;" >Map Layer Selector</div> 
         
       <input type="checkbox" id="points" class="points-checkbox" checked="true">
   <label for="points">individual attacks</label>
@@ -533,13 +621,13 @@ body {
       <input type="checkbox" id="poly" class="poly-checkbox" checked="true">
   <label for="poly">governorate data</label>
 
-    </div>
+    
     
     
 <!-- CHECKBOX FOR FILTERING POINTS -->  
    
-<div class="boxes">
-     <div class="legend-title" style="font-family: Lato; font-weight: 900; text-align: center; color: black; font-size: 15px; text-transform: none;padding-bottom:15px;" >Filter Attacks by Type</div> 
+
+     <div class="legend-title" style="font-family: Lato; font-weight: 900; text-align: center; color: black; font-size: 15px; text-transform: none;padding-bottom:10px;padding-top:10px;border-top: 3px solid black;border-top-style:dotted;" >Filter Attacks by Type</div> 
   <input type="checkbox" id="airstrike" class="airstrike-checkbox">
   <label for="airstrike">airstrike</label>
 
@@ -548,61 +636,57 @@ body {
 
   <input type="checkbox" id="indiscriminate" class="indiscriminate-checkbox">
   <label for="indiscriminate">unidentified</label>
-</div>
+      
+        
 
-<!-- ZOOM BUTTONS -->
-    
-  <div class="buttons" style="width:100%">
-    <div id="inner" style="font-size: 22px; text-transform: uppercase; font-weight:900; color:#b00836;text-shadow: -.5px 0 black, 0 .5px black, .5px 0 black, 0 -.5px black;">Jump to:</div>  
-    <button class="Yemen">Yemen</button>
-    <button class="Sadah">Sa'dah</button>
-    <button class="Hajjah">Hajjah</button>
-    <button class="Harad">Harad</button>
-    <button class="Sanaa">Sana'a</button>
-    <button class="Taiz">Taiz</button>
-    <button class="Aden">Aden</button>
-  </div>
 
  <!--    POINTS LEGEND -->
 
-  <div class="cartodb-legend" style="position: absolute; width: 175px; right: 0.5%; bottom: 2%; padding: 10px;">
-      
-  <div class="legend-title" style="font-family: Lato; font-weight: 900; text-align: center; color: black; font-size: 15px; text-transform: none;" >Health Facility Attacks</div> 
+  <div class="legend-title" style="font-family: Lato; font-weight: 900; text-align: center; color: black; font-size: 15px; text-transform: none;padding-top: 10px;border-top: 3px solid black;border-top-style:dotted;" >Health Facility Attacks</div> 
    
 <ul class="legend-list">
-      <li><div class="image" style="font-size: 13px; font-weight: bold; text-transform: lowercase; margin-bottom: 10px; font-family: Cardo; color:#b00836;">
+      <li><div class="image" style="font-size: 14px; font-weight: 900; text-transform: lowercase; margin-bottom: 10px; font-family: Cardo; color:#b00836;">
 <a href=""><img style= "vertical-align:middle" img src="https://d30y9cdsu7xlg0.cloudfront.net/png/163336-200.png" width="20" height="20" alt=""></a> airstrike</div></li>
       
-    <li><div class="bullet" style="font-size: 13px; font-weight: bold; text-transform: lowercase; margin-bottom: 10px; font-family: Cardo; color:#b00836; font-weight: bold;">
+    <li><div class="bullet" style="font-size: 14px; font-weight: 900; text-transform: lowercase; margin-bottom: 10px; font-family: Cardo; color:#b00836; font-weight: bold;">
 <a href=""><img style= "vertical-align:middle" img src="https://d30y9cdsu7xlg0.cloudfront.net/png/659093-200.png" width="20" height="20" alt=""></a> ground attack</div></li>
       
-    <li><div class="bullet" style="font-size: 13px; font-weight: bold; text-transform: lowercase; font-family: Cardo; color:#b00836; font-weight: bold;">
+    <li><div class="bullet" style="font-size: 14px; font-weight: 900; text-transform: lowercase; font-family: Cardo; color:#b00836; font-weight: bold;">
 <a href=""><img style= "vertical-align:middle; color:#b00836;" img src="https://d30y9cdsu7xlg0.cloudfront.net/png/756341-200.png" width="20" height="20" alt=""></a>
 unidentified attack</div></li>
   </ul>
         
 
 <!--    POLYGON LEGEND -->
-  
-<span class="cartodb-legend category">       
+    
+<span style= "padding-bottom:none;" class="cartodb-legend category">       
       
-    <div class="legend-title" style="font-family: Lato; font-weight: 900; text-align: center; color: black; font-size: 14px; text-transform: none; padding-top: 15px;" >% of Health Facilities at Diminished Capacity</div>
+    <div class="legend-title" style="font-family: Lato; font-weight: 900; text-align: center; color: black; font-size: 14px; text-transform: none;border-top: 3px solid black;border-top-style:dotted;padding-top: 10px;" >% of Health Facilities at Diminished Capacity</div>
             
     <ul class ="legend-list" style="color:black;">
   
-        <div class="bullet" style="background-color:#ea052b;"></div><li style="font-size:14px;font-family:Cardo;font-weight:900;color:black;">>75%</li>
+      <li style="font-size:14px;font-family:Cardo;font-weight:900;color:black;">
+        <div class="bullet1" style="background-color:#ee4d5a;"></div>
+        >75%
+     </li>
       
-        <div class="bullet" style="background-color:#f5666f;"></div><li style="font-size:14px;font-family:Cardo;font-weight:bold;color:black;">50% - 75%</li>
+      <li style="font-size:14px;font-family:Cardo;font-weight:bold;color:black;">
+        <div class="bullet1" style="background-color:#f97b57;"></div>
+        50% - 75%
+      </li>
+      
+      <li style="font-size:14px;font-family:Cardo;font-weight:bold;color:black;">
+          <div class="bullet1" style="background-color:#f3ad6a"></div> 25% - 49%
+      </li>
         
-        <div class="bullet" style="background-color:#e3a0a1"></div><li style="font-size:14px;font-family:Cardo;font-weight:bold;color:black;">25% - 49%</li>
-        
-        <div class="bullet" style="background-color:#eeefe4; padding-top: 2px; align:center;" >
-            </div><li style="text-transform: lowercase; vertical-align: center; padding-bottom: 2px;font-size:14px;font-family:Cardo;color:black;">less than 25%</li>
-        
-                </ul>
-                    </span>
-                    </div>
-    
+      <li style="font-size:14px;font-family:Cardo;font-weight:bold;color:black;">
+        <div class="bullet1" style="background-color:#ecda9a;" ></div>
+        less than 25%
+       </li>
+     </ul>
+   </span>
+ </div>  
+  
     
 <!-- SIDEPANEL -->    
     
@@ -667,38 +751,36 @@ unidentified attack</div></li>
         </div>
       </div>
     </div>
-
-
         
 <script>
 
 <!-- GET MAP FROM CARTO -->
     
-var pointsLayer;
-var polyLayer;
-var leafletMap;
+  var pointsLayer;
+  var polyLayer;
+  var leafletMap;
     
-    $(document).ready(function () {
-        cartodb.createVis('map', 'https://thenewschool.carto.com/u/smitg916/api/v2/viz/6cddd90c-3b65-11e7-acc2-0ee66e2c9693/viz.json', {
-            zoom: 7,
-            search: false,
-            cartodb_logo:false,
-            center_lat: 16.147798,
-            center_lon: 45.9255705,
-            scrollwheel: true,
-            layer_selector: false,
-            zoomControl: false,
-            }) 
-        
-            .done(function (vis, layers) {
-                vis.getNativeMap().addControl(L.control.zoom());
-                leafletMap = vis.getNativeMap();
-                polyLayer = layers[1].getSubLayer(0);
-                pointsLayer = layers[1].getSubLayer(1);
-          layers[1].setInteraction(true);
-          pointsLayer.setInteraction(true);
+  $(document).ready(function () {
+    cartodb.createVis('map', 'https://thenewschool.carto.com/u/smitg916/api/v2/viz/6cddd90c-3b65-11e7-acc2-0ee66e2c9693/viz.json', {
+          zoom: 7,
+          search: false,
+          cartodb_logo:false,
+          center_lat: 16.247798,
+          center_lon: 46.6255705,
+          scrollwheel: true,
+          layer_selector: false,
+          infowindow: true,
+          zoomControl: false
+    }) 
+    .done(function (vis, layers) {
+      vis.getNativeMap().addControl(L.control.zoom());
+      leafletMap = vis.getNativeMap();
+      polyLayer = layers[1].getSubLayer(0);
+      pointsLayer = layers[1].getSubLayer(1);
+      polyLayer.setInteraction(true);
+      pointsLayer.setInteraction(true);
             
-<!-- SCRIPT FOR LAYER CHECK BUTTONS -->           
+ // SCRIPT FOR LAYER CHECK BUTTONS
     
  $('.points-checkbox').change(function () {
           if ($('.points-checkbox').prop('checked')) {
@@ -719,18 +801,16 @@ $('.poly-checkbox').change(function () {
         });
             
             
-<!-- SCRIPT FOR POINTS FILTER CHECK BUTTONS -->           
-    
-
-$('.airstrike-checkbox').change(function () {
-          updateSql();
-        });
-        $('.ground-checkbox').change(function () {
-          updateSql();
-        });
-        $('.indiscriminate-checkbox').change(function () {
-          updateSql();
-        });
+  // SCRIPT FOR POINTS FILTER CHECK BUTTONS
+  $('.airstrike-checkbox').change(function () {
+    updateSql();
+  });
+  $('.ground-checkbox').change(function () {
+    updateSql();
+  });
+  $('.indiscriminate-checkbox').change(function () {
+    updateSql();
+  });
      
       // Update the SQL for the layer based on the current state of the checkboxes.
          function updateSql() {
@@ -757,7 +837,7 @@ $('.airstrike-checkbox').change(function () {
       }           
     
             
-<!-- MEDIA IN SIDEBAR SCRIPT-->
+<!-- PUT MEDIA IN SIDEBAR -->
     
  // Set which columns you want from the dataset when a feature is clicked. This is a comma-separated list.
             pointsLayer.set({
@@ -774,49 +854,31 @@ $('.airstrike-checkbox').change(function () {
             });    
             
 <!-- CUSTOM INFOWINDOW FOR POINTS LAYER -->              
-                        
-   var popupTemplate =  '<div class="cartodb-popup v2"> <a href="#close" class="cartodb-popup-close-button close">x</a> <div class="cartodb-popup-content-wrapper"> <div style="padding-bottom: 10px;" class="cartodb-popup-content">A(n) {{attack_or_disruption}} in the governorate of {{governorate}} on {{attack_date}} at the {{facility_name}} facility <a href="{{report_link}}" target="_blank">as reported by {{report_org}}.</div> </div> <div class="cartodb-popup-content-wrapper"><div class="cartodb-popup-content">Reported combatant(s): {{combatant_1}} </div> <div>Total killed: {{tot_k}}</div> <div>Total injured: {{tot_i}}</div></div> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">Level of Precision: {{precision_1}} </div> </div> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">Description: {{description}}</div>  <div class="cartodb-popup-content-wrapper"><div class="cartodb-popup-content">Media:</div><img style="width: 100%;height:150px;" src="{{media_1}}"/><img style="width: 100%px;height:150px;" src="{{media_2}}" </div></div>';
+  
+   
+   var popupTemplate =  '<div class="cartodb-popup v2"> <a href="#close" class="cartodb-popup-close-button close">x</a> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content"><div>A(n) {{attack_or_disruption}} in the governorate of {{governorate}} on {{attack_date}} at the {{facility_name}} facility <a href="{{report_link}}" target="_blank" style="color: #0061ff;">as reported by {{report_org}}</a>.</div> <div><h3>Reported combatant(s):</h3> {{combatant_1}} </div> <div><h3>Reported casualties:</h3>Killed: {{tot_k}}</div> <div>Injured: {{tot_i}}</div> <div> <h3>Level of Precision:</h3>{{precision_1}}  </div> <div> <h3>Detailed Description:</h3>{{description}}</div> <div><h3>Media:</h3> {{#media_1}}{{#media_1}}<img style="width: 100%;height:150px;" src="{{media_1}}"/>{{/media_1}}{{#media_2}}<img style="width: 100%px;height:150px;" src="{{media_2}}"/>{{/media_2}} </div>{{/media_1}}</div></div> </div>';
                
           pointsLayer.setInteractivity('cartodb_id');
             pointsLayer.infowindow.set('template_type', 'mustache');
             pointsLayer.infowindow.set('template', popupTemplate);
-                    });
-            }); 
+
     
-<!-- CUSTOM INFOWINDOW FOR POLY LAYER -->     
+ // CUSTOM INFOWINDOW FOR POLY LAYER
     
-  /* var popupTemplate =  '<div class="cartodb-popup v2"> <a href="#close" class="cartodb-popup-close-button close">x</a> <div class="cartodb-popup-content-wrapper"> <div style="padding-bottom: 10px;" class="cartodb-popup-content">Name: {{admin1name}} </div></div>';
+  var polygonPopupTemplate =  '<div class="cartodb-popup v2"> <a href="#close" class="cartodb-popup-close-button close">x</a> <div class="cartodb-popup-content-wrapper"> <div style="padding-bottom: 10px;" class="cartodb-popup-content"><h4>Governorate Name</h4>{{admin1name}} </div><div><h3>Population:</h3>{{current_es}}</div><div><h3>Est % of health facilities operating at diminished capacity</h3>{{hf_op_dimi}}% </div><div><h3>Est # of conflict indicents</h3>{{conflict_i}} </div><div><h3>Est # of Child Rights Violations</h3>{{chldrn_rig}} </div><div><h3>Est # of people in need</h3>{{people_in_}}</div></div>';
                
-          polyLayer.setInteractivity('cartodb_id');
-            polyLayer.infowindow.set('template_type', 'mustache');
-            polyLayer.infowindow.set('template', popupTemplate);
-                    });
-            });          
+  polyLayer.setInteractivity('cartodb_id, admin1name');
+  polyLayer.infowindow.set('template_type', 'mustache');
+  polyLayer.infowindow.set('template', polygonPopupTemplate);
     
-<!-- INFOWINDOWS FOR POINTS W/ EMBEDDED IMAGE -->
-
-/*  <script type="template/html" id="tooltip_template">
-    <div id="popup">
-        <div class="cartodb-popup v2"> 
-        <a href="#close" class="cartodb-popup-close-button close">x</a>
-            <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">A(n) {{attack_or_disruption}} in the governorate of {{governorate}} on {{attack_date}} at the {{facility_name}} facility <a href="{{report_link}}" target="_blank">as reported by {{report_org}}. </div> </div> <div class="cartodb-popup-tip-container"></div> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">Reported combatant(s): {{combatant_1}} </div> <div>Total killed: {{tot_k}}</div> <div>Total injured: {{tot_i}}</div><div> </div><div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content"> </div><div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content">Description: {{description}}</div> <div class="cartodb-popup-content-wrapper">
-              <div class="cartodb-popup-content">
-                <div>Media:</div>
-                <img style="width: 100%;" src="{{media_1}}" />
-              </div>
-            </div>
-            <div class="cartodb-popup-tip-container"></div>
-          </div> </div>';
-*/
-
-<!-- SCRIPT FOR ZOOM BUTTONS -->
+  // SCRIPT FOR ZOOM BUTTONS
   
   $('.Sanaa').click(function () {
     leafletMap.setView([15.369445, 44.191007], 12);
   });
     
  $('.Yemen').click(function () {
-    leafletMap.setView([16.147798, 45.9255705], 7);
+    leafletMap.setView([16.247798, 46.6255705], 7);
   });    
    
  $('.Hajjah').click(function () {
@@ -837,9 +899,13 @@ $('.Harad').click(function () {
     
  $('.Aden').click(function () {
     leafletMap.setView([12.810655, 45.0151118], 13);
-  });     
+ });     
+
+    
+    }); // These two lines are the end of createVis.done--anything dealing with the map should happen before here
+  }); 
      
-<!-- SCRIPT FOR SIDEPANEL ACCORDION -->
+ // SCRIPT FOR SIDEPANEL ACCORDION
         
 (function(){
   var d = document,
@@ -905,6 +971,4 @@ switchAccordion = function(e) {
 
 <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
 </html>
-
-
 
