@@ -860,7 +860,9 @@ $('.poly-checkbox').change(function () {
                
           pointsLayer.setInteractivity('cartodb_id');
             pointsLayer.infowindow.set('template_type', 'mustache');
-            pointsLayer.infowindow.set('template', popupTemplate);
+              pointsLayer.infowindow.set('template', popupTemplate);
+              pointsLayer.infowindow.set('maxHeight', 390);
+              pointsLayer.infowindow.set('width', 260);
 
     
  // CUSTOM INFOWINDOW FOR POLY LAYER
@@ -870,6 +872,8 @@ $('.poly-checkbox').change(function () {
   polyLayer.setInteractivity('cartodb_id, admin1name');
   polyLayer.infowindow.set('template_type', 'mustache');
   polyLayer.infowindow.set('template', polygonPopupTemplate);
+  polyLayer.infowindow.set('maxHeight', 400);
+  polyLayer.infowindow.set('width', 250);        
     
   // SCRIPT FOR ZOOM BUTTONS
   
@@ -971,4 +975,3 @@ switchAccordion = function(e) {
 
 <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
 </html>
-
