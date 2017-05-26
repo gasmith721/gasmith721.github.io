@@ -43,11 +43,11 @@ html, body {
     position: absolute;
     right: 0;
     display: flex;
-    width: 75%;
+    width: 72.5%;
     z-index:5;
     overflow: hidden;
     height: 63px;
-    background-color: rgba(0,0,0,.33);
+    background-color: rgba(0,0,0,.34);
     justify-content: center;
     vertical-align: middle;
     align-content: center;
@@ -58,7 +58,7 @@ html, body {
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 25%;
+    width: 27.5%;
     height: 100%;
     overflow: auto;
     display: flex;
@@ -75,13 +75,13 @@ html, body {
     border-bottom: 5px solid black;
     border-bottom-style:double;
     text-align: center;
-    font-size: 28px; 
+    font-size: 32px; 
     font-family: Lato;
     color: #b00836; 
 }
     
 .leaflet-left {
-    left: 25%;
+    left: 28%;
     top: 9.3%;
     position: absolute;
     }
@@ -96,7 +96,7 @@ html, body {
         bottom: 2.5%;
         right: .75%;
     border-radius: 6px;
-    width: 185px;
+    width: 200px;
     border:1px solid #021a40; 
     background-color: #fff;
    -moz-box-shadow:    inset 0 0 2.5px #000000;
@@ -684,9 +684,9 @@ unidentified attack</div></li>
               </dt>
               <dd class="accordion-content accordionItem is-collapsed" id="accordion2" aria-hidden="true" style="padding: 5px;">
     <p>As part of the spatial analysis of the Yemeni conflict, Watchlist has compiled data and statistics from reports by a number of different organizations (OCHA, WHO, MSF, other NGOs, media outlets, etc.). The resulting map includes individual attacks and disruptions, as well as aggregate statistics at the governorate level. The period covered in this analysis is approximately March 2015 thru June 2016. Since data was not available for every governorate at the same point in time, statistics at this level are derived from different points throughout early-2015 to mid-2016.</p>                
-   <p>Over this period, and as detailed in the map to the right, Watchlist has identified 52 instances of an attack or a disruption that is supported by official reporting. Clicking directly on any of the data points on the map will pull up an infowindow that provides details about these incidents, including a link to the supporting report. INSERT COMMENT ABOUT POLY INFOWINDOWS.</p>
-   <p>It's important to note that, for a number of the individual incidents, the facility was either unnamed in the report or it was unable to be located on existing maps. Thus, the level of precision varies depending on the incident, ranging from rooftop level, to town/city, all the way to the governorate level. This means that some of the points on the map do not represent the actual location of that specific attack. The precision level is available in the infowindow of each point on the map.  </p>            
-   <p>The individual incidents can be filtered by attack type by choosing any of the three checkboxes - airstrike, ground attack, or unidentified - located at the top left. Both map layers can also be turned on or off by using the map layer selector located above the attack filter. Unchecking the governorate data layer, for instance, will leave just the individual attack data layer, which is then visible on top of satellite imagery, providing the user with a street-view perspective of where attacks occurred. </p>          
+   <p>Over this period, and as detailed in this map, Watchlist has identified 52 instances of an attack or disruption supported by official reporting. Clicking directly on any of these incidents provides additional details details, including a link to the supporting report. Likewise, health and other statistics at the governorate level can be accessed at the governorate level by clicking on any governorate. </p>
+   <p>For a number of the individual incidents, the facility was either unnamed in the report or it was unable to be located on existing maps. The level of precision varies by incident - anywhere from rooftop, neighborhood, town/city, and (where information is the most scarce) the governorate level. Thus, some of the points on the map do not represent the actual location of that specific attack. The precision level is available in the infowindow of each point on the map.  </p>            
+   <p>The individual incidents can be filtered by attack type by choosing any of the three checkboxes: airstrike, ground attack, or unidentified. Both map layers can also be turned on or off by using the map layer selector located above the attack filter. Unchecking the governorate data layer, for instance, will leave just the individual attack data layer, which is then visible on top of satellite imagery, providing the user with a street-level perspective of where attacks occurred. </p>          
    <p>Due to gaps in the reporting process caused by the overall difficulty of data collection in Yemen, 
    these incidents make up only a fraction of the total number of health facility attacks.</p>
               </dd>
@@ -726,11 +726,11 @@ unidentified attack</div></li>
     
   $(document).ready(function () {
     cartodb.createVis('map', 'https://thenewschool.carto.com/u/smitg916/api/v2/viz/6cddd90c-3b65-11e7-acc2-0ee66e2c9693/viz.json', {
-          zoom: 7,
+          zoom: 6,
           search: false,
           cartodb_logo:false,
-          center_lat: 16.247798,
-          center_lon: 46.6255705,
+          center_lat: 16.427798,
+          center_lon: 45.5355705,
           scrollwheel: true,
           layer_selector: false,
           infowindow: true,
@@ -824,8 +824,8 @@ $('.poly-checkbox').change(function () {
           pointsLayer.setInteractivity('cartodb_id');
             pointsLayer.infowindow.set('template_type', 'mustache');
               pointsLayer.infowindow.set('template', popupTemplate);
-              pointsLayer.infowindow.set('maxHeight', 390);
-              pointsLayer.infowindow.set('width', 260);
+              pointsLayer.infowindow.set('maxHeight', 385);
+              pointsLayer.infowindow.set('width', 245);
     
  // CUSTOM INFOWINDOW FOR POLY LAYER
     
@@ -844,7 +844,7 @@ $('.poly-checkbox').change(function () {
   });
     
  $('.Yemen').click(function () {
-    leafletMap.setView([16.247798, 46.6255705], 7);
+    leafletMap.setView([16.427798, 45.5355705], 6);
   });    
    
  $('.Hajjah').click(function () {
