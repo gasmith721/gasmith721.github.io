@@ -94,7 +94,7 @@ html, body {
   padding-right: 12px;    
     position: absolute;
         bottom: 2.5%;
-        right: .75%;
+        right: .375%;
     border-radius: 6px;
     width: 200px;
     border:1px solid #021a40; 
@@ -578,7 +578,7 @@ body {
 <!-- CHECKBOX FOR LAYERS -->  
     
   <div class="boxes" style="padding-bottom:none;">
-       <div class="legend-title" style="font-family: Lato; font-weight: 900; text-align: center; color: black; font-size: 15px; text-transform: none;padding-bottom:18px;font-weight: 800;" >Map Layer Selector</div> 
+       <div class="legend-title" style="font-family: Lato; font-weight: 900; text-align: center; color: black; font-size: 15px; text-transform: none;padding-bottom:14px;font-weight: 800;" >Map Layer Selector</div> 
         
       <input type="checkbox" id="points" class="points-checkbox" checked="true">
   <label for="points">individual attacks</label>
@@ -592,7 +592,7 @@ body {
 <!-- CHECKBOX FOR FILTERING POINTS -->  
    
 
-     <div class="legend-title" style="font-family: Lato; font-weight: 900; text-align: center; color: black; font-size: 15px; text-transform: none;padding-bottom:18px;padding-top:10px;border-top: 3px solid black;border-top-style:dotted;" >Filter Attacks by Type</div> 
+     <div class="legend-title" style="font-family: Lato; font-weight: 900; text-align: center; color: black; font-size: 15px; text-transform: none;padding-bottom:14px;padding-top:12px;border-top: 3px solid black;border-top-style:dotted;" >Filter Attacks by Type</div> 
   <input type="checkbox" id="airstrike" class="airstrike-checkbox">
   <label for="airstrike">airstrike</label>
 
@@ -630,21 +630,21 @@ unidentified attack</div></li>
             
     <ul class ="legend-list" style="color:black;">
   
-      <li style="font-size:14px;font-family:Cardo;font-weight:900;color:black;">
+      <li style="font-size:14px;font-family:Cardo;font-weight:900;color:black;padding-bottom:2px;">
         <div class="bullet1" style="background-color:#ee4d5a;"></div>
         >75%
      </li>
       
-      <li style="font-size:14px;font-family:Cardo;font-weight:bold;color:black;">
+      <li style="font-size:14px;font-family:Cardo;font-weight:bold;color:black;padding-bottom:2px;">
         <div class="bullet1" style="background-color:#f97b57;"></div>
         50% - 75%
       </li>
       
-      <li style="font-size:14px;font-family:Cardo;font-weight:bold;color:black;">
+      <li style="font-size:14px;font-family:Cardo;font-weight:bold;color:black;padding-bottom:2px;">
           <div class="bullet1" style="background-color:#f3ad6a"></div> 25% - 49%
       </li>
         
-      <li style="font-size:14px;font-family:Cardo;font-weight:bold;color:black;">
+      <li style="font-size:14px;font-family:Cardo;font-weight:bold;color:black;padding-bottom:2px;">
         <div class="bullet1" style="background-color:#ecda9a;" ></div>
         less than 25%
        </li>
@@ -729,8 +729,8 @@ unidentified attack</div></li>
           zoom: 6,
           search: false,
           cartodb_logo:false,
-          center_lat: 16.427798,
-          center_lon: 45.5355705,
+          center_lat: 16.077798,
+          center_lon: 45.0355705,
           scrollwheel: true,
           layer_selector: false,
           infowindow: true,
@@ -844,7 +844,7 @@ $('.poly-checkbox').change(function () {
   });
     
  $('.Yemen').click(function () {
-    leafletMap.setView([16.427798, 45.5355705], 6);
+    leafletMap.setView([16.277798, 46.4155705], 6.8);
   });    
    
  $('.Hajjah').click(function () {
