@@ -29,19 +29,16 @@
     
     
 <style>
-
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
     width: 100%;
 }
-
 #map {
     height: 100%;
     width: 100%;
 }
-
 #header {
     position: absolute;
     right: 0;
@@ -90,7 +87,6 @@ html, body {
     }
  
 /* CHECKBOX FILTERS */
-
 .boxes {
   margin: auto;
   padding-top: 12px;
@@ -107,9 +103,7 @@ html, body {
    -webkit-box-shadow: inset 0 0 2.5px #000000;
    box-shadow:         inset 0 0 2.5px #000000;
 }
-
 input[type="checkbox"] { display: none; }
-
 input[type="checkbox"] + label {
   display: block;
   position: relative;
@@ -123,9 +117,7 @@ input[type="checkbox"] + label {
   -moz-user-select: none;
   -ms-user-select: none;
 }
-
 input[type="checkbox"] + label:last-child { margin-bottom: 0; }
-
 input[type="checkbox"] + label:before {
   content: '';
   display: block;
@@ -139,7 +131,6 @@ input[type="checkbox"] + label:before {
   -webkit-transition: all .12s, border-color .08s;
   transition: all .12s, border-color .08s;
 }
-
 input[type="checkbox"]:checked + label:before {
   width: 10px;
   top: -5px;
@@ -177,17 +168,14 @@ input[type="checkbox"]:checked + label:before {
     padding: 5px;
     font-family: 'Lato';
 }
-
 .Yemen:hover {
     background-color: #b00836;
     color: white;
 }
-
 .Yemen:focus {
     background-color: #b00836;
     color: white;
 }    
-
 .Sadah {
     border: none;
     text-align: center;
@@ -204,12 +192,10 @@ input[type="checkbox"]:checked + label:before {
     padding: 5px;
     font-family: 'Lato';
 }
-
 .Sadah:hover {
     background-color: #b00836;
     color: white;
 }
-
 .Sadah:focus {
     background-color: #b00836;
     color: white;
@@ -231,17 +217,14 @@ input[type="checkbox"]:checked + label:before {
     padding: 5px;
     font-family: 'Lato';
 }
-
 .Hajjah:hover {
     background-color: #b00836;
     color: white;
 }
-
 .Hajjah:focus {
     background-color: #b00836;
     color: white;
 }
-
 .Harad {
     border: none;
     text-align: center;
@@ -258,12 +241,10 @@ input[type="checkbox"]:checked + label:before {
     padding: 5px;
     font-family: 'Lato';
 }
-
 .Harad:hover {
     background-color: #b00836;
     color: white;
 }
-
 .Harad:focus {
     background-color: #b00836;
     color: white;
@@ -285,12 +266,10 @@ input[type="checkbox"]:checked + label:before {
     padding: 5px;
     font-family: 'Lato';
 }
-
 .Sanaa:hover {
     background-color: #b00836;
     color: white;
 }
-
 .Sanaa:focus {
     background-color: #b00836;
     color: white;
@@ -312,12 +291,10 @@ input[type="checkbox"]:checked + label:before {
     padding: 5px;
     font-family: 'Lato';
 }
-
 .Taiz:hover {
     background-color: #b00836;
     color: white;
 }
-
 .Taiz:focus {
     background-color: #b00836;
     color: white;
@@ -339,17 +316,14 @@ input[type="checkbox"]:checked + label:before {
     padding: 5px;
     font-family: 'Lato';
 }
-
 .Aden:hover {
     background-color: #b00836;
     color: white;
 }
-
 .Aden:focus {
     background-color: #b00836;
     color: white;
 }      
-
 /* END ZOOM BUTTON STYLING */
     
     
@@ -360,7 +334,6 @@ input[type="checkbox"]:checked + label:before {
 }
 @import url(http://fonts.googleapis.com/css?family=Lato:400,700);
 body { 
-
   font-family:'Lato';
 }
 .heading-primary {
@@ -388,7 +361,6 @@ body {
 .accordion p {
   padding: 0em 2em 0em 0em;
 }
-
 .accordion {
     position:relative;
     background-color:#eee;
@@ -409,12 +381,10 @@ body {
           color: black;
           transition:background-color 0.5s ease-in-out;
 }
-
 .accordionTitle:hover {
     background-color: #b00836;
     color: white;
 }
-
  
     
 .accordionTitleActive,
@@ -428,7 +398,6 @@ body {
         background-color: #b00836;
     color: white;
     }        
-
 /*.accordionTitle:before {
           content: "+";
    font-size:1.5em;
@@ -477,7 +446,6 @@ body {
     transform:scale(1);
   }
 }
-
 @keyframes accordionOut {
     0% {
        opacity: 1;
@@ -488,7 +456,6 @@ body {
            transform:scale(0.9) rotateX(-60deg);
        }
 }   
-
 /* 'ZOOM TO' DIV */    
 #inner{
    width: 80%;
@@ -506,7 +473,6 @@ body {
         padding: 15px;
     
       }    
-
 .bullet1 {
     width: 10px;
     height: 10px;
@@ -543,7 +509,6 @@ body {
     font-family: Lato;
     font-size: 13px;
     }    
-
   div.cartodb-popup.v2 div.cartodb-popup-content-wrapper {
     padding-bottom: 14px;
     background-color: #222222;
@@ -753,7 +718,6 @@ unidentified attack</div></li>
     </div>
         
 <script>
-
 <!-- GET MAP FROM CARTO -->
     
   var pointsLayer;
@@ -843,7 +807,6 @@ $('.poly-checkbox').change(function () {
             pointsLayer.set({
               interactivity: 'media_1,media_2'
             });
-
             // When a feature is clicked, put the data in the sidebar
             pointsLayer.on('featureClick', function(e, latlng, pos, data) {
               // You can handle any text like this:
@@ -863,11 +826,10 @@ $('.poly-checkbox').change(function () {
               pointsLayer.infowindow.set('template', popupTemplate);
               pointsLayer.infowindow.set('maxHeight', 390);
               pointsLayer.infowindow.set('width', 260);
-
     
  // CUSTOM INFOWINDOW FOR POLY LAYER
     
-  var polygonPopupTemplate =  '<div class="cartodb-popup v2"> <a href="#close" class="cartodb-popup-close-button close">x</a> <div class="cartodb-popup-content-wrapper"> <div style="padding-bottom: 10px;" class="cartodb-popup-content"><h4>Governorate Name</h4>{{admin1name}} </div><div><h3>Population:</h3>{{current_es}}</div><div><h3>Est % of health facilities operating at diminished capacity</h3>{{hf_op_dimi}}% </div><div><h3>Est # of conflict indicents</h3>{{conflict_i}} </div><div><h3>Est # of Child Rights Violations</h3>{{chldrn_rig}} </div><div><h3>Est # of people in need</h3>{{people_in_}}</div></div>';
+  var polygonPopupTemplate =  '<div class="cartodb-popup v2"> <a href="#close" class="cartodb-popup-close-button close">x</a> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content"><h4>Governorate Name</h4>{{admin1name}} </div><div><h3>Est. Population</h3>{{current_es}}</div><div><h3>Est. % of health facilities operating at diminished capacity</h3>{{hf_op_dimi}} </div><div><h3>Est. # of conflict incidents</h3>{{conflict_i}} </div><div><h3>Est. # of Child Rights Violations</h3>{{chldrn_rig}} </div><div><h3>Est. # of people in need</h3>{{people_in_}}</div></div>';
                
   polyLayer.setInteractivity('cartodb_id, admin1name');
   polyLayer.infowindow.set('template_type', 'mustache');
@@ -904,7 +866,6 @@ $('.Harad').click(function () {
  $('.Aden').click(function () {
     leafletMap.setView([12.810655, 45.0151118], 13);
  });     
-
     
     }); // These two lines are the end of createVis.done--anything dealing with the map should happen before here
   }); 
@@ -924,7 +885,6 @@ $('.Harad').click(function () {
     e.preventDefault();
     e.target.click();
   }
-
     setAriaAttr = function(el, ariaType, newProperty){
     el.setAttribute(ariaType, newProperty);
   };
