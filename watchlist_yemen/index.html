@@ -698,7 +698,17 @@ unidentified attack</div></li>
               </dt>
               <dd class="accordion-content accordionItem is-collapsed" id="accordion3" aria-hidden="true" >
                 <p><a href="http://www.watchlist.org" target="_blank" style= "color: blue;">Watchlist on Children and Armed Conflict</a> strives to end strives to end violations against children in armed conflicts and to guarantee their rights. As a global network, the Watchlist builds partnerships among local, national, and international nongovernmental organizations, enhancing mutual capacities and strengths. Working together, we collect and disseminate information on violations against children in conflicts in order to influence key decision-makers to create and implement programs and policies that effectively protect children.</p>
-                <p>This project was developed... (let Watchlist determine language)</p>
+                <p>This project was developed as a collaboration between Watchlist and the Milano School of International Affairs at The New School in New York City.</p>
+
+                  <p style="padding-top:12px; font-weight: 900;">Mapping Project Advisors:
+                    <p> Eric Brelsfod and Stephen Metts</p>
+
+<p>- Lecturers, Milano School of International Affairs, New York</p>
+
+      <p style="padding-top:12px; font-weight: 900; ">Mapping Project Developers:</p>
+    <p>Julian Lattimore, Jalita Moore, and Gregory Smith</p>                  
+<p>- M.A. Graduate Students, Milano School of International Affairs, New York </p>                  
+
               </dd>
             </dl>
           </div>
@@ -829,7 +839,7 @@ $('.poly-checkbox').change(function () {
     
  // CUSTOM INFOWINDOW FOR POLY LAYER
     
-  var polygonPopupTemplate =  '<div class="cartodb-popup v2"> <a href="#close" class="cartodb-popup-close-button close">x</a> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content"><h4>Governorate Name</h4>{{admin1name}} </div><div><h3>Est. Population</h3>{{current_es}}</div><div><h3>Est. % of health facilities operating at diminished capacity</h3>{{hf_op_dimi}} </div><div><h3>Est. # of conflict incidents</h3>{{conflict_i}} </div><div><h3>Est. # of Child Rights Violations</h3>{{chldrn_rig}} </div><div><h3>Est. # of people in need</h3>{{people_in_}}</div></div>';
+  var polygonPopupTemplate =  '<div class="cartodb-popup v2"> <a href="#close" class="cartodb-popup-close-button close">x</a> <div class="cartodb-popup-content-wrapper"> <div class="cartodb-popup-content"><h4>Governorate Name</h4>{{admin1name}} </div><div><h3>Est. Population</h3>{{current_es}}</div><div><h3>Est. % of health facilities operating at diminished capacity</h3>{{hf_op_dimi}} </div><div><h3>Healthworkers per 10,000</h3>{{healthwork}} </div><div><h3>Est. # of conflict incidents</h3>{{conflict_i}} </div><div><h3>Est. # of Child Rights Violations</h3>{{chldrn_rig}} </div><div><h3>Est. # of people in need</h3>{{people_in_}}</div></div>';
                
   polyLayer.setInteractivity('cartodb_id, admin1name');
   polyLayer.infowindow.set('template_type', 'mustache');
