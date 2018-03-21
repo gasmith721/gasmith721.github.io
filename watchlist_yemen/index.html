@@ -88,10 +88,11 @@ html, body {
  
 /* CHECKBOX FILTERS */
 .boxes {
-  margin: auto;
-  padding-top: 12px;
-  padding-left: 12px;
-  padding-right: 12px;    
+    margin: auto;
+    padding-top: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 12px;
     position: absolute;
         top: 13.2%;
         right: .375%;
@@ -589,53 +590,18 @@ body {
   <div class="boxes" style="padding-bottom:none;">
        <div class="legend-title" style="font-family: Lato; font-weight: 900; text-align: center; color: black; font-size: 15px; text-transform: none;padding-bottom:14px;font-weight: 800;" >Map Layer Selector</div> 
         
+        <input type="checkbox" id="poly" class="poly-checkbox" checked="true">
+  <label for="poly">governorate-level</label>
+      
       <input type="checkbox" id="points" class="points-checkbox" checked="true">
   <label for="points">individual attacks</label>
       
-      <input type="checkbox" id="poly" class="poly-checkbox" checked="true">
-  <label for="poly">governorate data</label>
-
     
-    
-    
-<!-- CHECKBOX FOR FILTERING POINTS -->  
-   
-
-     <div class="legend-title" style="font-family: Lato; font-weight: 900; text-align: center; color: black; font-size: 15px; text-transform: none;padding-bottom:14px;padding-top:12px;border-top: 3px solid black;border-top-style:dotted;" >Filter Attacks by Type</div> 
-  <input type="checkbox" id="airstrike" class="airstrike-checkbox">
-  <label for="airstrike">airstrike</label>
-
-  <input type="checkbox" id="ground" class="ground-checkbox">
-  <label for="ground">ground</label>
-
-  <input type="checkbox" id="indiscriminate" class="indiscriminate-checkbox">
-  <label for="indiscriminate">unidentified</label>
-      
-        
-
-
- <!--    POINTS LEGEND -->
-
-  <div class="legend-title" style="font-family: Lato; font-weight: 900; text-align: center; color: black; font-size: 15px; text-transform: none;padding-top: 10px;border-top: 3px solid black;border-top-style:dotted;" >Health Facility Attacks</div> 
-   
-<ul class="legend-list">
-      <li><div class="image" style="font-size: 14px; font-weight: 900; text-transform: lowercase; margin-bottom: 10px; font-family: Cardo; color:#b00836;">
-<a href=""><img style= "vertical-align:middle" img src="https://d30y9cdsu7xlg0.cloudfront.net/png/163336-200.png" width="20" height="20" alt=""></a> airstrike</div></li>
-      
-    <li><div class="bullet" style="font-size: 14px; font-weight: 900; text-transform: lowercase; margin-bottom: 10px; font-family: Cardo; color:#b00836; font-weight: bold;">
-<a href=""><img style= "vertical-align:middle" img src="https://d30y9cdsu7xlg0.cloudfront.net/png/659093-200.png" width="20" height="20" alt=""></a> ground attack</div></li>
-      
-    <li><div class="bullet" style="font-size: 14px; font-weight: 900; text-transform: lowercase; font-family: Cardo; color:#b00836; font-weight: bold;">
-<a href=""><img style= "vertical-align:middle; color:#b00836;" img src="https://d30y9cdsu7xlg0.cloudfront.net/png/756341-200.png" width="20" height="20" alt=""></a>
-unidentified attack</div></li>
-  </ul>
-        
-
 <!--    POLYGON LEGEND -->
     
 <span style= "padding-bottom:none;" class="cartodb-legend category">       
       
-    <div class="legend-title" style="font-family: Lato; font-weight: 900; text-align: center; color: black; font-size: 14px; text-transform: none;border-top: 3px solid black;border-top-style:dotted;padding-top: 10px;" >% of Health Facilities at Diminished Capacity</div>
+    <div class="legend-title" style="font-family: Lato; font-weight: 900; text-align: center; color: black; font-size: 14px; text-transform: none;border-top: 3px solid black;border-top-style:;padding-top: 10px;" >% of Health Facilities at Diminished Capacity</div>
             
     <ul class ="legend-list" style="color:black;">
   
@@ -660,11 +626,46 @@ unidentified attack</div></li>
         
          <li style="font-size:14px;font-family:Cardo;font-weight:bold;color:black;padding-bottom:2px;">
         <div class="bullet1" style="background-color:#bdc0c4;" ></div>
-        Data Unavailable
+        Unavailable
        </li>
         
      </ul>
-   </span>
+   </span>    
+    
+
+      
+        
+
+
+ <!--    POINTS LEGEND -->
+
+  <div class="legend-title" style="font-family: Lato; font-weight: 900; text-align: center; color: black; font-size: 15px; text-transform: none;padding-top: 10px;border-top: 3px solid black;border-top-style:;" >Health Facility Attacks</div> 
+   
+<ul class="legend-list">
+      <li><div class="image" style="font-size: 14px; font-weight: 900; text-transform: lowercase; margin-bottom: 10px; font-family: Cardo; color:#b00836;">
+<a href=""><img style= "vertical-align:middle" img src="https://d30y9cdsu7xlg0.cloudfront.net/png/163336-200.png" width="20" height="20" alt=""></a> airstrike</div></li>
+      
+    <li><div class="bullet" style="font-size: 14px; font-weight: 900; text-transform: lowercase; margin-bottom: 10px; font-family: Cardo; color:#b00836; font-weight: bold;">
+<a href=""><img style= "vertical-align:middle" img src="https://d30y9cdsu7xlg0.cloudfront.net/png/659093-200.png" width="20" height="20" alt=""></a> ground attack</div></li>
+      
+    <li><div class="bullet" style="font-size: 14px; font-weight: 900; text-transform: lowercase; font-family: Cardo; color:#b00836; font-weight: bold;">
+<a href=""><img style= "vertical-align:middle; color:#b00836;" img src="https://d30y9cdsu7xlg0.cloudfront.net/png/756341-200.png" width="20" height="20" alt=""></a>
+unidentified attack</div></li>
+  </ul>
+        
+<!-- CHECKBOX FOR FILTERING POINTS -->  
+   
+
+     <div class="legend-title" style="font-family: Lato; font-weight: 900; text-align: center; color: black; font-size: 15px; text-transform: none;padding-bottom:14px;padding-top:12px;border-top: 3px solid black;border-top-style:dotted;" >Filter Attacks by Type</div> 
+  <input type="checkbox" id="airstrike" class="airstrike-checkbox">
+  <label for="airstrike">airstrike</label>
+
+  <input type="checkbox" id="ground" class="ground-checkbox">
+  <label for="ground">ground</label>
+
+  <input type="checkbox" id="indiscriminate" class="indiscriminate-checkbox">
+  <label for="indiscriminate">unidentified</label>
+
  </div>  
   
     
@@ -848,7 +849,6 @@ pointsLayer.infowindow.set('maxHeight', 400);
 pointsLayer.infowindow.set('width', 333);
 // EB: you want to use popupTemplate here, since it has the code itself you don't have to ask it for the html
 pointsLayer.infowindow.set('template',  popupTemplate);
-
 pointsLayer.infowindow.set('sanitizeTemplate', false); 
         
         
